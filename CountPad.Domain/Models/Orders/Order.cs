@@ -1,4 +1,10 @@
-﻿using CountPad.Domain.Models.Packages;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
+using CountPad.Domain.Models.Packages;
 using CountPad.Domain.Models.Solds;
 
 namespace CountPad.Domain.Models.Orders
