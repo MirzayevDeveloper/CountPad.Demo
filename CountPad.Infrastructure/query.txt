@@ -1,28 +1,8 @@
-﻿CREATE TYPE product_type AS ENUM (
-  'fruits',
-  'vegetables',
-  'meat',
-  'dairy',
-  'bread',
-  'beverages',
-  'electronics',
-  'clothing',
-  'books',
-  'furniture',
-  'cosmetics'
-);
-CREATE TYPE user_status AS ENUM (
-    'Saller',
-    'Manager',
-    'Storekeeper'
-);
-
-
-CREATE TABLE products
+﻿CREATE TABLE products
 (
     id uuid NOT NULL,
     name character varying(50) NOT NULL,
-    product_type product_type DEFAULT 'fruits',
+    product_type TEXT NOT NULL,
     description text,
     PRIMARY KEY (id)
 );
@@ -53,7 +33,7 @@ CREATE TABLE users
     id uuid NOT NULL,
     name character varying(50) NOT NULL,
     phone character varying(50) NOT NULL,
-    user_status user_status,
+    user_status TEXT NOT NULL,
     password character varying(50) NOT NULL,
     PRIMARY KEY (id)
 );
