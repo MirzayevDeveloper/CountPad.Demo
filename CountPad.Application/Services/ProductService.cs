@@ -5,6 +5,7 @@
 
 using System;
 using System.Threading.Tasks;
+using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Products;
 
@@ -12,13 +13,14 @@ namespace CountPad.Application.Services
 {
     public class ProductService : IProductService
     {
-        public ProductService()
-        {
-        }
+        private readonly IProductRepository productRepository;
 
-        public Task<Product> AddProductAsync(Product product)
+        public ProductService(IProductRepository productRepository) =>
+            this.productRepository = productRepository;
+
+        public Task<int> AddProductAsync(Product product)
         {
-            throw new NotImplementedException();
+            return this.productRepository.AddAsync(product);
         }
     }
 }

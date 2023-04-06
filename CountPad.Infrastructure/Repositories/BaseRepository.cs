@@ -1,4 +1,9 @@
-﻿using System;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
 using System.IO;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +27,7 @@ namespace CountPad.Infrastructure.Repositories
 
         protected NpgsqlConnection CreateConnection() =>
             new NpgsqlConnection(this.configuration
-                .GetConnectionString("SchoolConnection"));
+                .GetConnectionString("CountPadConnection"));
 
         private async void CheckDataBaseExists(string stringConnection)
         {
@@ -38,7 +43,7 @@ namespace CountPad.Infrastructure.Repositories
                 using (var connection = new NpgsqlConnection(stringConnection))
                 {
                     connection.Open();
-                    string query = $"create database schooldb";
+                    string query = $"create database countpaddb";
 
                     await connection.ExecuteAsync(query);
                     CreateTables();
@@ -53,7 +58,7 @@ namespace CountPad.Infrastructure.Repositories
             {
                 connection.Open();
 
-                string query = $@"{File.ReadAllText("../../../../School.Infrastructure/query.txt")}";
+                string query = $@"{File.ReadAllText("../../../../CountPad.Infrastructure/query.txt")}";
                 connection.Execute(query);
             }
         }
