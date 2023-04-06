@@ -1,6 +1,4 @@
-﻿using CountPad.Domain.States;
-
-namespace CountPad.Domain.Model
+﻿namespace CountPad.Domain.Models.Users
 {
     public class User
     {
