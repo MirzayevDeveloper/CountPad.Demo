@@ -4,6 +4,7 @@
 // --------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
@@ -21,6 +22,11 @@ namespace CountPad.Application.Services
         public Task<int> AddProductAsync(Product product)
         {
             return this.productRepository.AddAsync(product);
+        }
+
+        public Task<List<Product>> SelectAllAsync()
+        {
+            return this.productRepository.SelectAllAsync();
         }
     }
 }

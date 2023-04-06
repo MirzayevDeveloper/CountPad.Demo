@@ -4,6 +4,7 @@
 // --------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Products;
 
@@ -12,6 +13,7 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     public interface IProductService
     {
         Task<int> AddProductAsync(Product product);
+        Task<List<Product>> SelectAllAsync();
     }
 }
 
