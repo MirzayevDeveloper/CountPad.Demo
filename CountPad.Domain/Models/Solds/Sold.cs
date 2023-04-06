@@ -1,4 +1,5 @@
-﻿using CountPad.Domain.Models.Users;
+﻿using System;
+using CountPad.Domain.Models.Users;
 
 namespace CountPad.Domain.Models.Solds
 {

@@ -6,4 +6,19 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Interfaces\" />
+    <None Remove="Services\" />
+    <None Remove="Interfaces\RepositoryInterfaces\" />
+    <None Remove="Interfaces\ServiceInterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="Interfaces\RepositoryInterfaces\" />
+    <Folder Include="Interfaces\ServiceInterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CountPad.Domain\CountPad.Domain.csproj" />
+  </ItemGroup>
 </Project>
