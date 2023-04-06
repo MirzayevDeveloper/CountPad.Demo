@@ -1,4 +1,6 @@
-﻿namespace CountPad.Domain.Models.Users
+﻿using System;
+
+namespace CountPad.Domain.Models.Users
 {
     public class User
     {

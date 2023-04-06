@@ -3,7 +3,6 @@ namespace CountPad.Domain.Models.Products
 {
     public enum ProductTypes
     {
-        MilkProducts,
         fruits,
         vegetables,
         meat,
