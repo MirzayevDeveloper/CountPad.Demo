@@ -1,0 +1,78 @@
+﻿CREATE TYPE product_type AS ENUM (
+  'fruits',
+  'vegetables',
+  'meat',
+  'dairy',
+  'bread',
+  'beverages',
+  'electronics',
+  'clothing',
+  'books',
+  'furniture',
+  'cosmetics'
+);
+CREATE TYPE user_status AS ENUM (
+    'Saller',
+    'Manager',
+    'Storekeeper'
+);
+
+
+CREATE TABLE products
+(
+    id uuid NOT NULL,
+    name character varying(50) NOT NULL,
+    product_type product_type DEFAULT 'fruits',
+    description text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE distributors
+(
+    id uuid NOT NULL,
+    name character varying(50) NOT NULL,
+    company_phone character varying(50) NOT NULL,
+    deliverer_phone character varying(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE packages
+(
+    id uuid NOT NULL,
+    product_id uuid NOT NULL References products(id),
+    count DOUBLE PRECISION NOT NULL,
+    distributor_id uuid NOT NULL References distributors(id),
+    incoming_price DECIMAL(10, 2) NOT NULL,
+    sale_price DECIMAL(10, 2) NOT NULL,
+    incoming_date date,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users
+(
+    id uuid NOT NULL,
+    name character varying(50) NOT NULL,
+    phone character varying(50) NOT NULL,
+    user_status user_status,
+    password character varying(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE solds
+(
+    id uuid NOT NULL,
+    sold_date date,
+    user_id uuid NOT NULL References users(id),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE orders
+(
+    id uuid NOT NULL,
+    package_id uuid NOT NULL References packages(id),
+    sold_id uuid NOT NULL References solds(id),
+    count DOUBLE PRECISION NOT NULL,
+    sold_price DECIMAL(10, 2) NOT NULL,
+    PRIMARY KEY (id)
+   
+);
+

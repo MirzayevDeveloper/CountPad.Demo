@@ -1,4 +1,5 @@
-﻿using CountPad.Domain.Models.Distributors;
+﻿using System;
+using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Domain.Models.Packages

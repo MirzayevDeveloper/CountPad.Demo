@@ -4,6 +4,6 @@
     {
         Saller,
         Manager,
-        storekeeper
+        Storekeeper
     }
 }
