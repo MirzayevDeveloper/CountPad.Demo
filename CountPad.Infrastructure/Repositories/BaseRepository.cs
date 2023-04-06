@@ -14,21 +14,21 @@ namespace CountPad.Infrastructure.Repositories
         {
             this.configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory() +
-                    "..\\..\\..\\..\\")
+                    @"../../../../../CountPad.Infrastructure")
                         .AddJsonFile("appsettings.json", optional: true).Build();
 
-            CheckDataBaseExists(configuration.GetConnectionString("Postgres"));
+            CheckDataBaseExists(configuration.GetConnectionString("PostgresConnection"));
         }
 
         protected NpgsqlConnection CreateConnection() =>
             new NpgsqlConnection(this.configuration
                 .GetConnectionString("CountPadConnection"));
 
-        private async void CheckDataBaseExists(string stringConnection)
+        private void CheckDataBaseExists(string stringConnection)
         {
             try
             {
-                using (NpgsqlConnection connection = CreateConnection())
+                using (var connection = CreateConnection())
                 {
                     connection.Open();
                 }
@@ -40,10 +40,11 @@ namespace CountPad.Infrastructure.Repositories
                     connection.Open();
                     string query = $"create database CountPadDb";
 
-                    await connection.ExecuteAsync(query);
+                    connection.Execute(query);
                     CreateTables();
                 }
             }
+
         }
 
         private void CreateTables()

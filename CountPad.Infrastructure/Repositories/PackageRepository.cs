@@ -28,8 +28,8 @@ namespace CountPad.Infrastructure.Repositories
                 string query = @"INSERT INTO packages 
                                 (id, product_id, count, distributor_id, incoming_price, 
                                 sale_price, incoming_date)
-                                VALUES (@Id, @Product, @Count, @Distributor,
-                                @IncomingPrice, @SalePrice, @IncomingPrice)";
+                                 VALUES (@Id, @Product, @Count, @Distributor,
+                                @IncomingPrice, @SalePrice, @IncomingDate)";
 
                 return await connection.ExecuteAsync(query, new
                 {
