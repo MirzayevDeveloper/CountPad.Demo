@@ -22,16 +22,17 @@ namespace CountPad.Infrastructure.Repositories
             using (NpgsqlConnection connection = CreateConnection())
             {
 
-                string sql = @"INSERT INTO Products (Id, Name, ProductType, Description) 
-                                            VALUES (@Id, @Name, @ProductType, @Description)";
+                string sql = @"INSERT INTO Products (Id, Name, Description, Product_Type) 
+                                            VALUES (@Id, @Name, @Description, @ProductType)";
 
-                int affectedRows = await connection.ExecuteAsync(sql, new
-                {
-                    product.Id,
-                    product.Name,
-                    ProductType = product.ProductType,
-                    product.Description
-                });
+                int affectedRows = connection.Execute(sql,
+                    new Dictionary<string, object>
+                        {
+                            { "Id", product.Id },
+                            { "Name", product.Name },
+                            { "Description", product.Description },
+                            { "ProductType", product.ProductType.ToString() }
+                        });
 
                 return affectedRows;
             }

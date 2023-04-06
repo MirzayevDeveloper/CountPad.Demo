@@ -19,7 +19,7 @@ namespace CountPad.Infrastructure.Repositories
         {
             this.configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory() +
-                    "..//..//..//..//")
+                    "../../../../../CountPad.Infrastructure")
                         .AddJsonFile("appsettings.json", optional: true).Build();
 
             CheckDataBaseExists(configuration.GetConnectionString("Postgres"));
@@ -45,7 +45,7 @@ namespace CountPad.Infrastructure.Repositories
                     connection.Open();
                     string query = $"create database countpaddb";
 
-                    await connection.ExecuteAsync(query);
+                    connection.Execute(query);
                     CreateTables();
                 }
             }
