@@ -37,19 +37,5 @@ namespace CountPad.Infrastructure.Repositories
                 return affectedRows;
             }
         }
-
-        public async Task<List<Product>> SelectAllAsync()
-        {
-            using (NpgsqlConnection connection = CreateConnection())
-            {
-
-                string selectAllProductsQuery = "select * from Products";
-
-                IEnumerable<Product> products = (IEnumerable<Product>)connection
-                    .Query(selectAllProductsQuery);
-
-                return products.ToList();
-            }
-        }
     }
 }

@@ -23,11 +23,6 @@ namespace CountPad.Application.Services
         {
             return this.productRepository.AddAsync(product);
         }
-
-        public Task<List<Product>> SelectAllAsync()
-        {
-            return this.productRepository.SelectAllAsync();
-        }
     }
 }
 

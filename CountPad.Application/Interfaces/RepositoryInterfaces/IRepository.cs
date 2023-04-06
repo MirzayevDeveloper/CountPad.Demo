@@ -12,7 +12,6 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
     public interface IRepository<T>
     {
         Task<int> AddAsync(T entity);
-        Task<List<T>> SelectAllAsync();
     }
 }
 
