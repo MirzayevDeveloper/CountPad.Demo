@@ -5,12 +5,13 @@
 
 using System;
 using System.Threading.Tasks;
+using CountPad.Domain.Models.Products;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IRepository<T>
+    public interface IProductService
     {
-        Task<T> AddAsync(T @object);
+        Task<Product> AddProductAsync(Product product);
     }
 }
 
