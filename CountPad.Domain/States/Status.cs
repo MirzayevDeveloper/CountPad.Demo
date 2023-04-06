@@ -1,6 +1,9 @@
 ﻿namespace CountPad.Domain.States
 {
-    internal class Status
+    public enum Status
     {
+        Saller,
+        Manager,
+        storekeeper
     }
 }
