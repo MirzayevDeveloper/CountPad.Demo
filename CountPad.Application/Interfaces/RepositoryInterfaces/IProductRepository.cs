@@ -4,14 +4,12 @@
 // --------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public interface IRepository<T>
+    public interface IProductRepository : IRepository<Product>
     {
-        Task<int> AddAsync(T entity);
     }
 }
 

@@ -1,4 +1,9 @@
-﻿using System;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
 using System.IO;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +19,7 @@ namespace CountPad.Infrastructure.Repositories
         {
             this.configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory() +
-                    @"../../../../../CountPad.Infrastructure")
+                    "../../../../../CountPad.Infrastructure")
                         .AddJsonFile("appsettings.json", optional: true).Build();
 
             CheckDataBaseExists(configuration.GetConnectionString("PostgresConnection"));
@@ -38,7 +43,7 @@ namespace CountPad.Infrastructure.Repositories
                 using (var connection = new NpgsqlConnection(stringConnection))
                 {
                     connection.Open();
-                    string query = $"create database CountPadDb";
+                    string query = $"create database countpaddb";
 
                     connection.Execute(query);
                     CreateTables();
@@ -59,3 +64,4 @@ namespace CountPad.Infrastructure.Repositories
         }
     }
 }
+

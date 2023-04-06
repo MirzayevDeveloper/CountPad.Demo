@@ -3,10 +3,17 @@ namespace CountPad.Domain.Models.Products
 {
     public enum ProductTypes
     {
-        Beverages,
-        Fruits,
-        Clothes,
-        MilkProducts
+        fruits,
+        vegetables,
+        meat,
+        dairy,
+        bread,
+        beverages,
+        electronics,
+        clothing,
+        books,
+        furniture,
+        cosmetics
     }
 }
 

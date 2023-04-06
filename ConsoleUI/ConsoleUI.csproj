@@ -17,4 +17,12 @@
     <ProjectReference Include="..\CountPad.Infrastructure\CountPad.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CountPad.Domain\CountPad.Domain.csproj" />
+    <ProjectReference Include="..\CountPad.Application\CountPad.Application.csproj" />
+    <ProjectReference Include="..\CountPad.Infrastructure\CountPad.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Tynamix.ObjectFiller" Version="1.5.8" />
+  </ItemGroup>
 </Project>
