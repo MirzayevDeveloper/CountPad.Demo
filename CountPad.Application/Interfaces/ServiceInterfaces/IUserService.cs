@@ -4,12 +4,12 @@
 // --------------------------------------------------------
 
 using System.Threading.Tasks;
+using CountPad.Domain.Models.Users;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IRepository<T>
+    public interface IUserService
     {
-        Task<int> AddAsync(T entity);
+        Task<int> AddUserAsync(User user);
     }
 }
-
