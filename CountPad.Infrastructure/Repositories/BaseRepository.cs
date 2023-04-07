@@ -19,7 +19,7 @@ namespace CountPad.Infrastructure.Repositories
         {
             this.configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory() +
-                    "../../../../../CountPad.Infrastructure")
+                    @"../../../../../CountPad.Infrastructure")
                         .AddJsonFile("appsettings.json", optional: true).Build();
 
             CheckDataBaseExists(configuration.GetConnectionString("PostgresConnection"));

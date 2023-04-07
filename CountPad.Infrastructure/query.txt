@@ -22,8 +22,8 @@ CREATE TABLE packages
     product_id uuid NOT NULL References products(id),
     count DOUBLE PRECISION NOT NULL,
     distributor_id uuid NOT NULL References distributors(id),
-    incoming_price DECIMAL(10, 2) NOT NULL,
-    sale_price DECIMAL(10, 2) NOT NULL,
+    incoming_price numeric(12, 2) NOT NULL,
+    sale_price numeric(12, 2) NOT NULL,
     incoming_date date,
     PRIMARY KEY (id)
 );
@@ -51,7 +51,7 @@ CREATE TABLE orders
     package_id uuid NOT NULL References packages(id),
     sold_id uuid NOT NULL References solds(id),
     count DOUBLE PRECISION NOT NULL,
-    sold_price DECIMAL(10, 2) NOT NULL,
+    sold_price Numeric(10, 2) NOT NULL,
     PRIMARY KEY (id)
    
 );

@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
+using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Packages;
 using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
+
 
 namespace CountPad.Infrastructure.Repositories
 {
@@ -30,20 +32,30 @@ namespace CountPad.Infrastructure.Repositories
                                 sale_price, incoming_date)
                                  VALUES (@Id, @Product, @Count, @Distributor,
                                 @IncomingPrice, @SalePrice, @IncomingDate)";
+                    
+                int affectedRows = connection.Execute(query,
+                   new Dictionary<string, object>
+                       {
+                            { "Id", entity.Id },
+                            { "Product", entity.Product.Id },
+                            { "Count", entity.Count },
+                            { "Distributor", entity.Distributor.Id },
+                            { "IncomingPrice", entity.IncomingPrice },
+                            { "SalePrice", entity.SalePrice },
+                            { "IncomingDate", entity.IncomingDate },
+                       });
 
-                return await connection.ExecuteAsync(query, new
-                {
-                    Id = entity.Id,
-                    Product = entity.Product.Id,
-                    Count = entity.Count,
-                    Distributor = entity.Distributor.Id,
-                    IncomingPrice = entity.IncomingPrice,
-                    SalePrice = entity.SalePrice,
-                    IncomingDate = entity.IncomingDate
-                });
+                return affectedRows;
             }
         }
-
+      /*  id uuid NOT NULL,
+    product_id uuid NOT NULL References products(id),
+    count DOUBLE PRECISION NOT NULL,
+    distributor_id uuid NOT NULL References distributors(id),
+    incoming_price DECIMAL(10, 2) NOT NULL,
+    sale_price DECIMAL(10, 2) NOT NULL,
+    incoming_date date,
+    PRIMARY KEY(id)*/
 
 
     }
