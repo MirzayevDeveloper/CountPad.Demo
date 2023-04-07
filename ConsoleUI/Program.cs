@@ -1,6 +1,7 @@
 ﻿using System;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Services;
+using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Products;
 using CountPad.Infrastructure.Repositories;
 using Tynamix.ObjectFiller;
@@ -20,7 +21,13 @@ namespace ConsoleUI
             filler.Setup().OnType<DateTime>()
                 .Use(new DateTimeRange(DateTime.UnixEpoch).GetValue);
 
-            return filler;
+            DistributorRepository distributorRepository = new();
+            DistributorService distributorService = new(distributorRepository);
+
+            Distributor distributor = CreateObjectFiller<Distributor>().Create();
+            distributorService.AddDistributorAsync(distributor);
+            Console.WriteLine(distributor.Name);
+
         }
 
         static async Task Main(string[] args)
