@@ -1,9 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Models\" />
+		<None Remove="Models\Products\" />
+		<None Remove="Models\Distributors\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Models\Products\" />
+		<Folder Include="Models\Distributors\" />
+	</ItemGroup>
 </Project>
