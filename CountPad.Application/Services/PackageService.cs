@@ -3,10 +3,6 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
@@ -18,10 +14,10 @@ namespace CountPad.Application.Services
     {
         private readonly IPackageRepository packageRepository;
 
-        public PackageService(IPackageRepository packageRepository)=>
+        public PackageService(IPackageRepository packageRepository) =>
             this.packageRepository = packageRepository;
-        
-        public async Task<int> AddPackageAsync(Package package)=>
+
+        public async Task<int> AddPackageAsync(Package package) =>
             await this.packageRepository.AddAsync(package);
     }
 }

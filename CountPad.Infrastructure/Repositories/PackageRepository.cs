@@ -25,7 +25,7 @@ namespace CountPad.Infrastructure.Repositories
                                 sale_price, incoming_date)
                                  VALUES (@Id, @Product, @Count, @Distributor,
                                 @IncomingPrice, @SalePrice, @IncomingDate)";
-                    
+
                 int affectedRows = connection.Execute(query,
                    new Dictionary<string, object>
                        {

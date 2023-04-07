@@ -1,13 +1,11 @@
 ﻿using System;
-using Tynamix.ObjectFiller;
-using CountPad.Domain.Models.Packages;
 using System.Threading.Tasks;
-using CountPad.Application.Interfaces.ServiceInterfaces;
+using Tynamix.ObjectFiller;
 
 namespace ConsoleUI
 {
     public class Program
-    {     
+    {
         static async Task Main(string[] args)
         {
 

@@ -3,7 +3,6 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System;
 namespace CountPad.Domain.Models.Products
 {
     public enum ProductTypes
