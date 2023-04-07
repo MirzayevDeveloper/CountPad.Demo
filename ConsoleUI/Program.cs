@@ -1,6 +1,6 @@
 ﻿using System;
 using CountPad.Application.Services;
-using CountPad.Domain.Models.Products;
+using CountPad.Domain.Models.Users;
 using CountPad.Infrastructure.Repositories;
 using Tynamix.ObjectFiller;
 
@@ -16,6 +16,14 @@ namespace ConsoleUI
             //Product product = CreateObjectFiller<Product>().Create();
             //productService.AddProductAsync(product);
             //Console.WriteLine(product.Name);
+
+            UserRepository userRepository = new();
+            UserService userService = new(userRepository);
+
+            User user = CreateObjectFiller<User>().Create();
+            userService.AddUserAsync(user);
+            Console.WriteLine(user.Name);
+
 
         }
 

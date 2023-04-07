@@ -12,14 +12,12 @@ namespace CountPad.Application.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository userRepository;
+        private readonly IUserRepository userRepository;
 
         public UserService(IUserRepository userRepository) =>
            this.userRepository = userRepository;
 
-        public Task<int> AddUserAsync(User user)
-        {
-            return this.userRepository.AddAsync(user);
-        }
+        public Task<int> AddUserAsync(User user) =>
+            this.userRepository.AddAsync(user);
     }
 }

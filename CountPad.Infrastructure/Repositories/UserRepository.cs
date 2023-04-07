@@ -18,7 +18,7 @@ namespace CountPad.Infrastructure.Repositories
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
-                string sql = @"INSERT INTO users (Id, Name, Phone, Status, Password) 
+                string sql = @"INSERT INTO users (id, name, phone, user_status, password) 
                                             VALUES (@Id, @Name, @Phone, @Status,@Password)";
 
                 int affectedRows = connection.Execute(sql,
