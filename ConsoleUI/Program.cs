@@ -1,8 +1,4 @@
 ﻿using System;
-using CountPad.Application.Services;
-using CountPad.Domain.Models.Distributors;
-using CountPad.Domain.Models.Products;
-using CountPad.Infrastructure.Repositories;
 using Tynamix.ObjectFiller;
 
 namespace ConsoleUI
@@ -11,19 +7,6 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ProductRepository productRepository = new();
-            //ProductService productService = new(productRepository);
-
-            //Product product = CreateObjectFiller<Product>().Create();
-            //productService.AddProductAsync(product);
-            //Console.WriteLine(product.Name);
-
-            DistributorRepository distributorRepository = new();
-            DistributorService distributorService = new(distributorRepository);
-
-            Distributor distributor = CreateObjectFiller<Distributor>().Create();
-            distributorService.AddDistributorAsync(distributor);
-            Console.WriteLine(distributor.Name);
 
         }
 
