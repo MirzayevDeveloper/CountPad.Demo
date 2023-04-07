@@ -5,7 +5,6 @@ using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Products;
 using CountPad.Infrastructure.Repositories;
 using Tynamix.ObjectFiller;
-using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Packages;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.ServiceInterfaces;
@@ -21,28 +20,32 @@ namespace ConsoleUI
             filler.Setup().OnType<DateTime>()
                 .Use(new DateTimeRange(DateTime.UnixEpoch).GetValue);
 
+            return filler;
+        }
+
+     
+        static async Task Main(string[] args)
+        {
+            Distributor myDistrub = CreateObjectFiller<Distributor>().Create();
+
             DistributorRepository distributorRepository = new();
             DistributorService distributorService = new(distributorRepository);
 
-            Distributor distributor = CreateObjectFiller<Distributor>().Create();
-            distributorService.AddDistributorAsync(distributor);
-            Console.WriteLine(distributor.Name);
+            distributorService.AddDistributorAsync(myDistrub);
 
-        }
 
-        static async Task Main(string[] args)
-        {
-            ProductRepository productRepository = new ProductRepository();
-            IProductService productService = new ProductService(productRepository);
             var fillers = CreateObjectFiller<Product>();
             var myprod = fillers.Create();
-
+            ProductRepository productRepository = new ProductRepository();
+            IProductService productService = new ProductService(productRepository);
+           
             await productService.AddProductAsync(myprod);
 
 
             var filler = CreateObjectFiller<Package>();
             var mypac = filler.Create();
             mypac.Product = myprod;
+            mypac.Distributor= myDistrub;
 
             PackageRepository packageRepository = new PackageRepository();
             PackageService packageService = new PackageService(packageRepository);
@@ -50,7 +53,6 @@ namespace ConsoleUI
             int a = await packageService.AddPackageAsync(mypac);
             Console.WriteLine();
             Console.ReadKey();
-
         }
     }
 }
