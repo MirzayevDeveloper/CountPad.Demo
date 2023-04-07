@@ -4,6 +4,7 @@
 // --------------------------------------------------------
 
 using System;
+
 namespace CountPad.Domain.Models.Products
 {
     public class Product

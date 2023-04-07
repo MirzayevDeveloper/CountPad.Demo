@@ -8,5 +8,5 @@ using CountPad.Domain.Models.Packages;
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
     public interface IPackageRepository:IRepository<Package>
-    {}
+    {   }
 }

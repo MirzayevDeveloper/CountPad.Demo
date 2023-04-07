@@ -3,19 +3,12 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
-using CountPad.Application.Interfaces.RepositoryInterfaces;
-using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Packages;
-using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
-
 
 namespace CountPad.Infrastructure.Repositories
 {
@@ -48,15 +41,5 @@ namespace CountPad.Infrastructure.Repositories
                 return affectedRows;
             }
         }
-      /*  id uuid NOT NULL,
-    product_id uuid NOT NULL References products(id),
-    count DOUBLE PRECISION NOT NULL,
-    distributor_id uuid NOT NULL References distributors(id),
-    incoming_price DECIMAL(10, 2) NOT NULL,
-    sale_price DECIMAL(10, 2) NOT NULL,
-    incoming_date date,
-    PRIMARY KEY(id)*/
-
-
     }
 }
