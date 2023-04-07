@@ -3,7 +3,6 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces

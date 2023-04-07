@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Tynamix.ObjectFiller;
 
 namespace ConsoleUI
 {
     public class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
 
         }

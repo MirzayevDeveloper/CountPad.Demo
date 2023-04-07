@@ -1,4 +1,9 @@
-﻿using System;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
 using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Products;
 

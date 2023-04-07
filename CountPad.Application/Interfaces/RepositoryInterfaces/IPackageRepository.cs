@@ -3,13 +3,10 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System.Threading.Tasks;
+using CountPad.Domain.Models.Packages;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public interface IRepository<T>
-    {
-        Task<int> AddAsync(T entity);
-    }
+    public interface IPackageRepository : IRepository<Package>
+    { }
 }
-

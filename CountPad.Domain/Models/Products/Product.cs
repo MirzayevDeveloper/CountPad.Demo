@@ -1,4 +1,10 @@
-﻿using System;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
+
 namespace CountPad.Domain.Models.Products
 {
     public class Product

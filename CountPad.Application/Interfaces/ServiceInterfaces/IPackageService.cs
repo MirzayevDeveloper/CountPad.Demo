@@ -4,12 +4,12 @@
 // --------------------------------------------------------
 
 using System.Threading.Tasks;
+using CountPad.Domain.Models.Packages;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IRepository<T>
+    public interface IPackageService
     {
-        Task<int> AddAsync(T entity);
+        Task<int> AddPackageAsync(Package package);
     }
 }
-

@@ -1,5 +1,4 @@
-﻿using System;
-using CountPad.Domain.Models.Distributors;
+﻿using CountPad.Domain.Models.Distributors;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
