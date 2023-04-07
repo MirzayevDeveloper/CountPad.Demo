@@ -12,7 +12,12 @@ using CountPad.Application.Interfaces.ServiceInterfaces;
 namespace ConsoleUI
 {
     public class Program
-    {
+    {     
+        static async Task Main(string[] args)
+        {
+            
+        }
+
         public static Filler<T> CreateObjectFiller<T>() where T : class
         {
             var filler = new Filler<T>();
@@ -21,38 +26,6 @@ namespace ConsoleUI
                 .Use(new DateTimeRange(DateTime.UnixEpoch).GetValue);
 
             return filler;
-        }
-
-     
-        static async Task Main(string[] args)
-        {
-            Distributor myDistrub = CreateObjectFiller<Distributor>().Create();
-
-            DistributorRepository distributorRepository = new();
-            DistributorService distributorService = new(distributorRepository);
-
-            distributorService.AddDistributorAsync(myDistrub);
-
-
-            var fillers = CreateObjectFiller<Product>();
-            var myprod = fillers.Create();
-            ProductRepository productRepository = new ProductRepository();
-            IProductService productService = new ProductService(productRepository);
-           
-            await productService.AddProductAsync(myprod);
-
-
-            var filler = CreateObjectFiller<Package>();
-            var mypac = filler.Create();
-            mypac.Product = myprod;
-            mypac.Distributor= myDistrub;
-
-            PackageRepository packageRepository = new PackageRepository();
-            PackageService packageService = new PackageService(packageRepository);
-
-            int a = await packageService.AddPackageAsync(mypac);
-            Console.WriteLine();
-            Console.ReadKey();
         }
     }
 }
