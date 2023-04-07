@@ -1,6 +1,8 @@
 ﻿using System;
 using CountPad.Application.Services;
 using CountPad.Domain.Models.Users;
+using CountPad.Domain.Models.Distributors;
+using CountPad.Domain.Models.Products;
 using CountPad.Infrastructure.Repositories;
 using Tynamix.ObjectFiller;
 
@@ -24,6 +26,13 @@ namespace ConsoleUI
             userService.AddUserAsync(user);
             Console.WriteLine(user.Name);
 
+
+            //DistributorRepository distributorRepository = new();
+            //DistributorService distributorService = new(distributorRepository);
+
+            //Distributor distributor = CreateObjectFiller<Distributor>().Create();
+            //distributorService.AddDistributorAsync(distributor);
+            //Console.WriteLine(distributor.Name);
 
         }
 
