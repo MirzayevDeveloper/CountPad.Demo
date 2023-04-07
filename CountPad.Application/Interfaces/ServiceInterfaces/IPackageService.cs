@@ -3,12 +3,13 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-namespace CountPad.Domain.Models.Users
+using System.Threading.Tasks;
+using CountPad.Domain.Models.Packages;
+
+namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public enum Status
+    public interface IPackageService
     {
-        Saller,
-        Manager,
-        Storekeeper
+        Task<int> AddPackageAsync(Package package);
     }
 }

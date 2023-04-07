@@ -3,8 +3,6 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;

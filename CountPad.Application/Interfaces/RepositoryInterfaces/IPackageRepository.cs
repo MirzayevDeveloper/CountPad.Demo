@@ -3,12 +3,10 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-namespace CountPad.Domain.Models.Users
+using CountPad.Domain.Models.Packages;
+
+namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public enum Status
-    {
-        Saller,
-        Manager,
-        Storekeeper
-    }
+    public interface IPackageRepository : IRepository<Package>
+    { }
 }
