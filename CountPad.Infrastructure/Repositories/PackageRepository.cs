@@ -67,9 +67,9 @@ namespace CountPad.Infrastructure.Repositories
                     changedNumber += await connection.ExecuteAsync(query, new
                     {
                         Id = entity.Id,
-                        Product = entity.Product,
+                        Product = entity.Product.Id,
                         Count=entity.Count,
-                        Distributor=entity.Distributor,
+                        Distributor=entity.Distributor.Id,
                         IncomingPrice=entity.IncomingPrice,
                         SalePrice=entity.SalePrice,
                         IncomingDate=entity.IncomingDate
@@ -116,7 +116,7 @@ namespace CountPad.Infrastructure.Repositories
                 {
                     Id = entity.Id,
                     Product = entity.Product.Id,
-                    Count = entity.Product.Id,
+                    Count = entity.Count,
                     Distributor=entity.Distributor.Id,
                     IncomingPrice=entity.IncomingPrice,
                     SalePrice=entity.SalePrice,
