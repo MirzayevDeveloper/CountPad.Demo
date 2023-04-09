@@ -49,16 +49,14 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<Product> GetByIdAsync(Guid guid)
+        public async Task<Product> GetByIdAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
-                string sql = @"Select * from Products WHERE ID=@id";
+                string sql = @"select * from products where id = @Id";
 
-                Product selectedProduct = await connection.QuerySingleOrDefaultAsync(sql,
-                    new { Id = guid });
-
-                return selectedProduct;
+                return await connection
+                    .QuerySingleOrDefaultAsync(sql, new { Id = id });
             }
         }
 

@@ -49,6 +49,8 @@ namespace ConsoleUI
 
                             var productUI =
                                 new ProductUI(productRepository);
+
+                            productUI.ProductCase().Wait();
                         }
                         break;
                     case 3:
