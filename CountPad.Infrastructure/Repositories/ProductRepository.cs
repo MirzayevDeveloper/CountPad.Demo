@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Products;
@@ -48,6 +49,53 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
+        public async Task<Product> GetByIdAsync(Guid guid)
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Select * from Products WHERE ID=@id";
+
+                Product selectedProduct = await connection.QuerySingleOrDefaultAsync(sql,
+                    new { Id = guid });
+
+                return selectedProduct;
+            }
+        }
+
+        public async Task<List<Product>> GetAllAsync()
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Select * from Products";
+
+                List<Product> allProducts = connection.Query<Product>(sql).ToList();
+
+                return allProducts;
+            }
+        }
+
+        public async Task<int> UpdateAsync(Product product)
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Update Products
+                                SET Name=@Name,
+                                Product_Type=@Product_Type,
+                                Description=@Description
+                                WHERE ID=@id";
+
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        Name = product.Name,
+                        Product_Type = product.ProductType,
+                        Description = product.Description
+                    });
+
+                return affectedRows;
+            }
+        }
+
         public async Task<int> DeleteAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())
@@ -58,29 +106,6 @@ namespace CountPad.Infrastructure.Repositories
 
                 return affectedRows;
             }
-        }
-
-        public async Task<Product> GetByIdAsync(Guid guid)
-        {
-            using (NpgsqlConnection connection = CreateConnection())
-            {
-                string sql = @"Select * from Products WHERE ID=@id";
-
-                Product SelectedProduct = await connection.QuerySingleOrDefaultAsync(sql,
-                    new { Id = guid });
-
-                return SelectedProduct;
-            }
-        }
-
-        public Task<List<Product>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateAsync(Product entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

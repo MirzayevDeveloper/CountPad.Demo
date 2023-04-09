@@ -8,9 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
-using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Packages;
-using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
 using static Dapper.SqlMapper;
@@ -47,11 +45,35 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> AddRangeAsync(IEnumerable<Package> packages)
+        public async Task<int> AddRangeAsync(IEnumerable<Package> packages) 
         {
-            var tasks = packages.Select(p => AddAsync(p));
-            int[] results = await Task.WhenAll(tasks);
-            return results.Sum();
+            await using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"INSERT INTO packages 
+                                (id, product_id, count, distributor_id, incoming_price, 
+                                sale_price, incoming_date)
+                                 VALUES (@Id, @Product, @Count, @Distributor,
+                                @IncomingPrice, @SalePrice, @IncomingDate)";
+
+                int rowsAffected = default;
+
+                foreach (Package entity in packages)
+                {
+                    rowsAffected = await connection.ExecuteAsync(query, new
+                    {
+                        Id = entity.Id,
+                        Product = entity.Product.Id,
+                        Count = entity.Count,
+                        Distributor = entity.Distributor.Id,
+                        IncomingPrice = entity.IncomingPrice,
+                        SalePrice = entity.SalePrice,
+                        IncomingDate = entity.IncomingDate
+                    });
+                }
+                return rowsAffected;
+            }
         }
 
         public async Task<List<Package>> GetAllAsync()
