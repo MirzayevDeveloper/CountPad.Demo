@@ -49,18 +49,6 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> DeleteAsync(Guid id)
-        {
-            using (NpgsqlConnection connection = CreateConnection())
-            {
-                string sql = @"Delete from Products WHERE ID=@id";
-
-                int affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
-
-                return affectedRows;
-            }
-        }
-
         public async Task<Product> GetByIdAsync(Guid guid)
         {
             using (NpgsqlConnection connection = CreateConnection())
@@ -86,9 +74,38 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public Task<int> UpdateAsync(Product entity)
+        public async Task<int> UpdateAsync(Product product)
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Update Products
+                                SET Name=@Name,
+                                Product_Type=@Product_Type,
+                                Description=@Description
+                                WHERE ID=@id";
+
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        Name = product.Name,
+                        Product_Type = product.ProductType,
+                        Description = product.Description
+                    });
+
+                return affectedRows;
+            }
+        }
+
+        public async Task<int> DeleteAsync(Guid id)
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Delete from Products WHERE ID=@id";
+
+                int affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
+
+                return affectedRows;
+            }
         }
     }
 }
