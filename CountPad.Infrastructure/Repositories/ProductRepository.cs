@@ -42,9 +42,17 @@ namespace CountPad.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(Guid id)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+
+                string sql = @"Delete * from Products WHERE ID=@id";
+
+                int affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
+
+                return affectedRows;
+            }
         }
 
         public Task<List<Product>> GetAllAsync()
@@ -52,7 +60,7 @@ namespace CountPad.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Product> GetByIdAsync(Guid id)
+        public Task<Product> GetByIdAsync(Guid guid)
         {
             throw new NotImplementedException();
         }

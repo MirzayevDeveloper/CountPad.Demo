@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
@@ -24,17 +25,16 @@ namespace CountPad.Application.Services
         public async Task<int> AddRangePackageAsync(IEnumerable<Package> packages)=>
             await this.packageRepository.AddRangeAsync(packages);
 
-        public async Task<int> DeletePackageAsync(int packageId)=>
-            await this.DeletePackageAsync(packageId);
-        
+        public async Task<Package> GetPackageByIdAsync(Guid id) =>
+            await this.packageRepository.GetByIdAsync(id);
 
         public async Task<List<Package>> GetAllPackageAsync()=>
             await this.packageRepository.GetAllAsync();
 
-        public async Task<Package> GetPackageByIdAsync(int packageId)=>
-            await this.packageRepository.GetByIdAsync(packageId);
-
         public async Task<int> UpdatePackageAsync(Package package)=>
             await this.packageRepository.UpdateAsync(package);  
+
+        public async Task<int> DeletePackageAsync(Guid id)=>
+            await this.packageRepository.DeleteAsync(id);     
     }
 }
