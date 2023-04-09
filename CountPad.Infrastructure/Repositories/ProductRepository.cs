@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
@@ -41,9 +42,17 @@ namespace CountPad.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+
+                string sql = @"Delete * from Products WHERE ID=@id";
+
+                int affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
+
+                return affectedRows;
+            }
         }
 
         public Task<List<Product>> GetAllAsync()
@@ -51,9 +60,9 @@ namespace CountPad.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<Product> GetByIdAsync(int id)
+        public Task<Product> GetByIdAsync(Guid guid)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<int> UpdateAsync(Product entity)
