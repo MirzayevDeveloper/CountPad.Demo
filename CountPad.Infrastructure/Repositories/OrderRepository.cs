@@ -97,7 +97,7 @@ namespace CountPad.Infrastructure.Repositories
             {
                 connection.Open();
 
-                var query = "UPDATE classes SET package_id = @PackageId" +
+                var query = "UPDATE orders SET package_id = @PackageId" +
                         "sold_id = @SoldId WHERE id = @Id";
 
                 return await connection.ExecuteAsync(query, new

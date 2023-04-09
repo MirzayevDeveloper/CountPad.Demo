@@ -62,7 +62,6 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-
         public async Task<Sold> GetByIdAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())
@@ -75,6 +74,7 @@ namespace CountPad.Infrastructure.Repositories
                     query, new { Id = id });
             }
         }
+
         public async Task<List<Sold>> GetAllAsync()
         {
             using (NpgsqlConnection connection = CreateConnection())
@@ -93,7 +93,7 @@ namespace CountPad.Infrastructure.Repositories
             {
                 connection.Open();
 
-                string query = "UPDATE classes SET sold_date = @SoldDate" +
+                string query = "UPDATE solds SET sold_date = @SoldDate" +
                         "user_id = @UserId WHERE id = @Id";
 
                 return await connection.ExecuteAsync(query, new
