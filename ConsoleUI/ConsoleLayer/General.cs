@@ -47,7 +47,7 @@ namespace EKundalik.ConsoleLayer
                           $"\n3.Select {name}" +
                           $"\n4.Select All {name}s" +
                           $"\n5.Update {name}" +
-                          $"\n5.Delete {name}" +
+                          $"\n6.Delete {name}" +
                           $"\n7.Add random {name}s" +
                           $"\n8.Back\n\n" +
                           $"choose option: ");

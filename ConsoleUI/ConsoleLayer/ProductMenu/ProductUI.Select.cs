@@ -8,14 +8,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Products;
 
-namespace CountPad.Application.Interfaces.ServiceInterfaces
+namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
-    public interface IProductService
+    public partial class ProductUI
     {
-        Task<int> AddProductAsync(Product product);
-        Task<int> AddRangeAsync(IEnumerable<Product> products);
-        Task<Product> GetByIdAsync(Guid id);
-        Task<int> DeleteProductAsync(Guid id);
+        public string SelectProduct()
+        {
+            Console.Write("enter product id: ");
+            string productId = Console.ReadLine();
+
+            return productId;
+        }
     }
 }
-
