@@ -73,9 +73,8 @@ namespace CountPad.Infrastructure.Repositories
                 connection.Open();
 
                 string query = @"SELECT * FROM packages";
-                List<Package> packages = await connection.QueryAsync<Package>(query);
-
-                return packages;
+      
+                return connection.Query<Package>(query).ToList();
             }
         }
 
