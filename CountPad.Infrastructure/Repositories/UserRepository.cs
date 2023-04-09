@@ -5,11 +5,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
+using CountPad.Domain.Models.Packages;
 using CountPad.Domain.Models.Users;
 using Dapper;
 using Npgsql;
+using static Dapper.SqlMapper;
 
 namespace CountPad.Infrastructure.Repositories
 {
@@ -36,29 +39,87 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public Task<int> AddRangeAsync(IEnumerable<User> entities)
+        public async Task<int> AddRangeAsync(IEnumerable<User> entities)
         {
-            throw new System.NotImplementedException();
+            await using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query= @"INSERT INTO users (id, name, phone, user_status, password) 
+                                            VALUES (@Id, @Name, @Phone, @Status,@Password)";
+
+                int rowAffected = default;
+
+                foreach (User entity in entities)
+                {
+                    rowAffected = await connection.ExecuteAsync(query, new
+                    {
+                        Id = entity.Id,
+                        Name = entity.Name,
+                        Phone = entity.Phone,
+                        Status = entity.Status,
+                        Password=entity.Password
+                    });
+                }
+                return rowAffected;
+            }
         }
 
-        public Task<int> DeleteAsync(Guid id)
+        public async Task<User> GetByIdAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"SELECT * FROM users WHERE id=@Id";
+
+                return connection.QuerySingleOrDefault<User>(query, new { Id = id });
+            }
         }
 
-        public Task<List<User>> GetAllAsync()
+        public async Task<List<User>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"SELECT * FROM users";
+
+                return connection.Query<User>(query).ToList();
+            }
         }
 
-        public Task<User> GetByIdAsync(Guid id)
+        public async Task<int> UpdateAsync(User entity)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = "UPDATE users SET name=@Name, phone=@Phone, user_status=@Status, password=@Password WHERE id = @Id";
+                
+                return await connection.ExecuteAsync(query, new
+                {
+                    Id = entity.Id,
+                    Name=entity.Name,
+                    Phone = entity.Phone,
+                    Status = entity.Status,
+                    Password=entity.Password
+                });
+            }
         }
 
-        public Task<int> UpdateAsync(User entity)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"DELETE FROM users WHERE id = @Id";
+                int affectedRows = await connection.ExecuteAsync(query, new { Id = id });
+
+                return affectedRows;
+            }
         }
+
     }
 }

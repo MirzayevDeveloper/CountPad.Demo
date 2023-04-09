@@ -45,7 +45,7 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> AddRangeAsync(IEnumerable<Package> packages)
+        public async Task<int> AddRangeAsync(IEnumerable<Package> packages) 
         {
             await using (NpgsqlConnection connection = CreateConnection())
             {
