@@ -21,14 +21,14 @@ namespace CountPad.Infrastructure.Repositories
                 string sql = @"INSERT INTO users (id, name, phone, user_status, password) 
                                             VALUES (@Id, @Name, @Phone, @Status,@Password)";
 
-                int affectedRows = connection.Execute(sql,
+                int affectedRows = await connection.ExecuteAsync(sql,
                    new Dictionary<string, object>
                    {
                        { "Id", user.Id },
-                            { "Name", user.Name },
-                            { "Phone", user.Phone },
-                            {"Password",user.Password},
-                            { "Status", user.Status.ToString()}
+                       { "Name", user.Name },
+                       { "Phone", user.Phone },
+                       {"Password",user.Password},
+                       { "Status", user.Status.ToString()}
                    });
 
                 return affectedRows;
