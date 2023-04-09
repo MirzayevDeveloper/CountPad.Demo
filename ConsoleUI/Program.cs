@@ -1,12 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
 using Tynamix.ObjectFiller;
 
 namespace ConsoleUI
 {
     public class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
 
         }

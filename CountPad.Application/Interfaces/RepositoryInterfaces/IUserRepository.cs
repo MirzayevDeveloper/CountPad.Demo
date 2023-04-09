@@ -7,7 +7,7 @@ using CountPad.Domain.Models.Users;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public interface IUserRepository :IRepository<User>
+    public interface IUserRepository : IRepository<User>
     {
     }
 }
