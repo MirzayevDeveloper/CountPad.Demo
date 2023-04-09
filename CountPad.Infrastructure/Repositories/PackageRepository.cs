@@ -78,9 +78,16 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public Task<Package> GetByIdAsync(int id)
+        public async Task<Package> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"SELECT * FROM packages WHERE id=@Id";
+
+                return connection.QuerySingleOrDefault<Package>(query, new { Id=id});
+            }
         }
 
         public Task<int> UpdateAsync(Package entity)

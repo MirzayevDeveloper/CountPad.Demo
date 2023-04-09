@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Packages;
@@ -13,9 +14,9 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     {
         Task<int> AddPackageAsync(Package package);
         Task<int> AddRangePackageAsync(IEnumerable<Package> packages);
-        Task<Package> GetPackageByIdAsync(int packageId);
+        Task<Package> GetPackageByIdAsync(Guid guid);
         Task<List<Package>> GetAllPackageAsync();
         Task<int> UpdatePackageAsync(Package package);
-        Task<int> DeletePackageAsync(int packageId);
+        Task<int> DeletePackageAsync(Guid guid);
     }
 }
