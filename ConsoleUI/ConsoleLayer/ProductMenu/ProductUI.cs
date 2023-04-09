@@ -11,7 +11,7 @@ using CountPad.Domain.Models.Products;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Services;
 
-namespace ConsoleUI.ConsoleLayer
+namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
     public partial class ProductUI
     {
@@ -29,47 +29,53 @@ namespace ConsoleUI.ConsoleLayer
                 Console.Clear();
                 int choice = General.PrintCrudOptions(nameof(Product));
                 Console.Beep();
-
+                /*$"1.Create {name}" +
+                          $"\n2.Create Many {name}" +
+                          $"\n3.Select {name}" +
+                          $"\n4.Select All {name}s" +
+                          $"\n5.Update {name}" +
+                          $"\n5.Delete {name}" +
+                          $"\n7.Add random {name}s" +
+                          $"\n8.Back\n\n" +
+                          $"choose option: ");*/
                 switch (choice)
                 {
                     case 1:
                         {
-                            Student maybeStudent =
-                                await AddStudentMenu();
 
-                            await this.studentService
-                                .AddStudentAsync(maybeStudent);
                         }
                         break;
                     case 2:
                         {
-                            await SelectStudent();
+
                         }
                         break;
                     case 3:
                         {
-                            Student student = await UpdateStudent();
 
-                            await this.studentService.AddStudentAsync(student);
                         }
                         break;
                     case 4:
                         {
-                            Student maybeStudent = DeleteStudent();
 
-                            await this.studentService.DeleteStudentAsync(
-                                maybeStudent.StudentId);
                         }
                         break;
                     case 5:
                         {
-                            General.SelectAll(await this.studentService.GetAllStudentAsync());
+
                         }
                         break;
                     case 6:
-                        AddStudent();
+                        {
+
+                        }
                         break;
                     case 7:
+                        {
+
+                        }
+                        break;
+                    case 8:
                         isActive = false;
                         break;
                 }

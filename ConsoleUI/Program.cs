@@ -4,7 +4,7 @@
 // --------------------------------------------------------
 
 using System;
-using ConsoleUI.ConsoleLayer;
+using ConsoleUI.ConsoleLayer.ProductMenu;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Infrastructure.Repositories;
 
