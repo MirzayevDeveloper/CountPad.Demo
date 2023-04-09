@@ -25,17 +25,16 @@ namespace CountPad.Application.Services
         public async Task<int> AddRangePackageAsync(IEnumerable<Package> packages) =>
             await this.packageRepository.AddRangeAsync(packages);
 
-        public async Task<int> DeletePackageAsync(Guid packageId) =>
-            await this.DeletePackageAsync(packageId);
-
+        public async Task<Package> GetPackageByIdAsync(Guid packageId) =>
+            await this.packageRepository.GetByIdAsync(packageId);
 
         public async Task<List<Package>> GetAllPackageAsync() =>
             await this.packageRepository.GetAllAsync();
 
-        public async Task<Package> GetPackageByIdAsync(Guid packageId) =>
-            await this.packageRepository.GetByIdAsync(packageId);
-
         public async Task<int> UpdatePackageAsync(Package package) =>
             await this.packageRepository.UpdateAsync(package);
+
+        public async Task<int> DeletePackageAsync(Guid packageId) =>
+            await this.DeletePackageAsync(packageId);
     }
 }

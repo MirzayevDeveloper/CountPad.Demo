@@ -8,7 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
+using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Packages;
+using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
 using static Dapper.SqlMapper;
@@ -76,9 +78,26 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public Task<int> UpdateAsync(Package entity)
+        public async Task<int> UpdateAsync(Package entity)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = "UPDATE packages SET product_id=@Product, count=@Count, distributor_id=@Distributor, " +
+                    "incoming_price=@IncomingPrice, sale_price=@SalePrice, incoming_date=@IncomingDate WHERE id = @Id";
+
+                return await connection.ExecuteAsync(query, new
+                {
+                   Id = entity.Id,
+                   Product=entity.Product.Id,
+                   Count=entity.Count,
+                   Distributor=entity.Distributor.Id,
+                   IncomingPrice=entity.IncomingPrice,
+                   SalePrice=entity.SalePrice,
+                   IncomingDate=entity.IncomingDate
+                });
+            }
         }
       
         public async Task<int> DeleteAsync(Guid id)
