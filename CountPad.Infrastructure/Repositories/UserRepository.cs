@@ -34,5 +34,30 @@ namespace CountPad.Infrastructure.Repositories
                 return affectedRows;
             }
         }
+
+        public Task<int> AddRangeAsync(IEnumerable<User> entities)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<int> DeleteAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<User>> GetAllAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<User> GetByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<int> UpdateAsync(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
