@@ -24,12 +24,12 @@ namespace CountPad.Application.Services
             return this.productRepository.AddAsync(product);
         }
 
-        public Task<int> AddRangeAsync(IEnumerable<Product> products)
+        public Task<int> AddProductsRangeAsync(IEnumerable<Product> products)
         {
             return this.productRepository.AddRangeAsync(products);
         }
 
-        public Task<Product> GetByIdAsync(Guid id)
+        public Task<Product> GetProductByIdAsync(Guid id)
         {
             return this.productRepository.GetByIdAsync(id);
         }
@@ -39,7 +39,7 @@ namespace CountPad.Application.Services
             return this.productRepository.GetAllAsync();
         }
 
-        public Task<int> UpdateAsync(Product product)
+        public Task<int> UpdateProductAsync(Product product)
         {
             return this.productRepository.UpdateAsync(product);
         }
