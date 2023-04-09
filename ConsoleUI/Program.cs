@@ -14,73 +14,70 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            static void Main(string[] args)
+            bool isActive = true;
+
+            while (isActive)
             {
-                bool isActive = true;
+                Console.Clear();
 
-                while (isActive)
+                Console.Write("1.Users\n" +
+                              "2.Products\n" +
+                              "3.Packages\n" +
+                              "4.Orders\n" +
+                              "5.Solds\n" +
+                              "6.Distributors\n" +
+                              "7.Exit\n" +
+                              "choose option: ");
+
+                string choose = Console.ReadLine();
+                int choice;
+                int.TryParse(choose, out choice);
+                Console.Beep();
+
+                switch (choice)
                 {
-                    Console.Clear();
+                    case 1:
+                        {
+                            IUserRepository userRepository =
+                                new UserRepository();
+                        }
+                        break;
+                    case 2:
+                        {
+                            IProductRepository productRepository =
+                                new ProductRepository();
 
-                    Console.Write("1.Users\n" +
-                                  "2.Products\n" +
-                                  "3.Packages\n" +
-                                  "4.Orders\n" +
-                                  "5.Solds\n" +
-                                  "6.Distributors\n" +
-                                  "7.Exit\n" +
-                                  "choose option: ");
-
-                    string choose = Console.ReadLine();
-                    int choice;
-                    int.TryParse(choose, out choice);
-                    Console.Beep();
-
-                    switch (choice)
-                    {
-                        case 1:
-                            {
-                                IUserRepository userRepository =
-                                    new UserRepository();
-                            }
-                            break;
-                        case 2:
-                            {
-                                IProductRepository productRepository =
-                                    new ProductRepository();
-
-                                var productUI =
-                                    new ProductUI(productRepository);
-                            }
-                            break;
-                        case 3:
-                            {
-                                IPackageRepository packageRepository =
-                                    new PackageRepository();
-                            }
-                            break;
-                        case 4:
-                            {
-                                IOrderRepository orderRepository =
-                                    new OrderRepository();
-                            }
-                            break;
-                        case 5:
-                            {
-                                ISoldRepository soldRepository =
-                                    new SoldRepository();
-                            }
-                            break;
-                        case 6:
-                            {
-                                IDistributorRepository distributorRepository =
-                                    new DistributorRepository();
-                            }
-                            break;
-                        case 7:
-                            isActive = false;
-                            break;
-                    }
+                            var productUI =
+                                new ProductUI(productRepository);
+                        }
+                        break;
+                    case 3:
+                        {
+                            IPackageRepository packageRepository =
+                                new PackageRepository();
+                        }
+                        break;
+                    case 4:
+                        {
+                            IOrderRepository orderRepository =
+                                new OrderRepository();
+                        }
+                        break;
+                    case 5:
+                        {
+                            ISoldRepository soldRepository =
+                                new SoldRepository();
+                        }
+                        break;
+                    case 6:
+                        {
+                            IDistributorRepository distributorRepository =
+                                new DistributorRepository();
+                        }
+                        break;
+                    case 7:
+                        isActive = false;
+                        break;
                 }
             }
         }
