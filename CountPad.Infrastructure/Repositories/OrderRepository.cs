@@ -41,7 +41,7 @@ namespace CountPad.Infrastructure.Repositories
 
         public async Task<int> AddRangeAsync(IEnumerable<Order> entities)
         {
-            await using(NpgsqlConnection connection = CreateConnection())
+            await using (NpgsqlConnection connection = CreateConnection())
             {
                 connection.Open();
 
@@ -104,7 +104,7 @@ namespace CountPad.Infrastructure.Repositories
                     query, new { Id = id });
             }
         }
-        
+
         public async Task<int> UpdateAsync(Order entity)
         {
             using (NpgsqlConnection connection = CreateConnection())
