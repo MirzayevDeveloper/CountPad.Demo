@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,19 +52,6 @@ namespace CountPad.Infrastructure.Repositories
             return results.Sum();
         }
 
-        public async Task<int> DeleteAsync(int id)
-        {
-            using (NpgsqlConnection connection = CreateConnection())
-            {
-                connection.Open();
-
-                string query = @"DELETE FROM packages WHERE id = @Id";
-                int affectedRows = await connection.ExecuteAsync(query, new { Id = id });
-
-                return affectedRows;
-            }
-        }
-
         public async Task<List<Package>> GetAllAsync()
         {
             using (NpgsqlConnection connection = CreateConnection())
@@ -76,7 +64,7 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<Package> GetByIdAsync(int id)
+        public async Task<Package> GetByIdAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
@@ -91,6 +79,19 @@ namespace CountPad.Infrastructure.Repositories
         public Task<int> UpdateAsync(Package entity)
         {
             throw new System.NotImplementedException();
+        }
+      
+        public async Task<int> DeleteAsync(Guid id)
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = @"DELETE FROM packages WHERE id = @Id";
+                int affectedRows = await connection.ExecuteAsync(query, new { Id = id });
+
+                return affectedRows;
+            }
         }
     }
 }
