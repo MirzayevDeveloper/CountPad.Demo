@@ -14,9 +14,9 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     {
         Task<int> AddPackageAsync(Package package);
         Task<int> AddRangePackageAsync(IEnumerable<Package> packages);
-        Task<Package> GetPackageByIdAsync(Guid guid);
+        Task<Package> GetPackageByIdAsync(Guid id);
         Task<List<Package>> GetAllPackageAsync();
         Task<int> UpdatePackageAsync(Package package);
-        Task<int> DeletePackageAsync(Guid guid);
+        Task<int> DeletePackageAsync(Guid id);
     }
 }
