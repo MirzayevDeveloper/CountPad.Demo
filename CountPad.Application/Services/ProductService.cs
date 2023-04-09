@@ -27,6 +27,11 @@ namespace CountPad.Application.Services
         {
             return this.productRepository.DeleteAsync(id);
         }
+
+        public Task<int> DeleteProductAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
