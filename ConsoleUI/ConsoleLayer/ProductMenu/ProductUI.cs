@@ -59,7 +59,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 4:
                         {
-                            // WIP
+                            this.SelectAllProducts();
                         }
                         break;
                     case 5:
