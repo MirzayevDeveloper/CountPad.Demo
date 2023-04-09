@@ -3,12 +3,13 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using CountPad.Domain.Models.Users;
+using System.Threading.Tasks;
+using CountPad.Domain.Models.Orders;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IOrderService
     {
-
+        Task<int> AddOrderAsync(Order order);
     }
 }
