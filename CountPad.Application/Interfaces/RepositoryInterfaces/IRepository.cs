@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,10 +13,10 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
     {
         Task<int> AddAsync(T entity);
         Task<int> AddRangeAsync(IEnumerable<T> entities);
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(Guid guid);
         Task<List<T>> GetAllAsync();
         Task<int> UpdateAsync(T entity);
-        Task<int> DeleteAsync(int id);
+        Task<int> DeleteAsync(Guid guid);
     }
 }
 
