@@ -22,8 +22,8 @@ namespace CountPad.Application.Services
         public async Task<int> AddOrderAsync(Order order) =>
             await this.orderRepository.AddAsync(order);
 
-        public async Task<int> AddRangeOrderAsync(IEnumerable<Order> entities) =>
-            await this.orderRepository.AddRangeAsync(entities);
+        public async Task<int> AddRangeOrderAsync(IEnumerable<Order> orders) =>
+            await this.orderRepository.AddRangeAsync(orders);
 
         public async Task<int> DeleteOrderAsync(Guid id) =>
             await this.orderRepository.DeleteAsync(id);
@@ -34,7 +34,7 @@ namespace CountPad.Application.Services
         public async Task<Order> GetOrderByIdAsync(Guid id) =>
             await this.orderRepository.GetByIdAsync(id);
 
-        public async Task<int> UpdateOrderAsync(Order entity) =>
-            await this.orderRepository.UpdateAsync(entity);
+        public async Task<int> UpdateOrderAsync(Order order) =>
+            await this.orderRepository.UpdateAsync(order);
     }
 }
