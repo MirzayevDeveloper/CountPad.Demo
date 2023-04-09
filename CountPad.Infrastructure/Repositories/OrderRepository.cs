@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Orders;
@@ -65,24 +66,61 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = "DELETE FROM orders WHERE id = @Id";
+
+                int rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
+
+                return rowsAffected;
+            }
         }
 
-        public Task<List<Order>> GetAllAsync()
+        public async Task<List<Order>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                var query = "SELECT * FROM orders";
+
+                return connection.Query<Order>(query).ToList();
+            }
         }
 
-        public Task<Order> GetByIdAsync(int id)
+        public async Task<Order> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
-        }
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
 
-        public Task<int> UpdateAsync(Order entity)
+                var query = "SELECT * FROM orders WHERE id = @Id";
+
+                return await connection.QuerySingleOrDefaultAsync<Order>(
+                    query, new { Id = id });
+            }
+        }
+        
+        public async Task<int> UpdateAsync(Order entity)
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                var query = "UPDATE classes SET package_id = @PackageId" +
+                        "sold_id = @SoldId WHERE id = @Id";
+
+                return await connection.ExecuteAsync(query, new
+                {
+                    Id = entity.Id,
+                    PackageId = entity.Package.Id,
+                    SoldId = entity.Sold.Id
+                });
+            }
         }
     }
 }
