@@ -14,9 +14,9 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     {
         Task<int> AddOrderAsync(Order order);
         Task<int> AddRangeOrderAsync(IEnumerable<Order> entities);
-        Task<int> GetOrderByIdAsync(Guid id);
-        Task<List<Order>> GetAllAsync();
-        Task<int> UpdateAsync(Order entity);
-        Task<int> DeleteAsync(Guid id);
+        Task<Order> GetOrderByIdAsync(Guid id);
+        Task<List<Order>> GetAllOrdersAsync();
+        Task<int> UpdateOrderAsync(Order entity);
+        Task<int> DeleteOrderAsync(Guid id);
     }
 }

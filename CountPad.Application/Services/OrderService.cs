@@ -25,24 +25,16 @@ namespace CountPad.Application.Services
         public async Task<int> AddRangeOrderAsync(IEnumerable<Order> entities) =>
             await this.orderRepository.AddRangeAsync(entities);
 
-        public Task<int> DeleteAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> DeleteOrderAsync(Guid id) =>
+            await this.orderRepository.DeleteAsync(id);
 
-        public Task<List<Order>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<Order>> GetAllOrdersAsync() =>
+            await this.orderRepository.GetAllAsync();
 
-        public Task<int> GetOrderByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Order> GetOrderByIdAsync(Guid id) =>
+            await this.orderRepository.GetByIdAsync(id);
 
-        public Task<int> UpdateAsync(Order entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> UpdateOrderAsync(Order entity) =>
+            await this.orderRepository.UpdateAsync(entity);
     }
 }
