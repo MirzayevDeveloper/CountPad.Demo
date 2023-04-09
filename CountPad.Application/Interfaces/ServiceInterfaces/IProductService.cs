@@ -3,6 +3,8 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Products;
 
@@ -11,7 +13,8 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     public interface IProductService
     {
         Task<int> AddProductAsync(Product product);
-        Task<int> DeleteProductAsync(int id);
+        Task<int> AddRangeAsync(IEnumerable<Product> products);
+        Task<int> DeleteProductAsync(Guid id);
 
     }
 }

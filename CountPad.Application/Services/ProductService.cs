@@ -4,6 +4,7 @@
 // --------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
@@ -23,14 +24,14 @@ namespace CountPad.Application.Services
             return this.productRepository.AddAsync(product);
         }
 
+        public Task<int> AddRangeAsync(IEnumerable<Product> products)
+        {
+            return this.productRepository.AddRangeAsync(products);
+        }
+
         public Task<int> DeleteProductAsync(Guid id)
         {
             return this.productRepository.DeleteAsync(id);
-        }
-
-        public Task<int> DeleteProductAsync(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

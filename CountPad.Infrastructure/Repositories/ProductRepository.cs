@@ -20,26 +20,32 @@ namespace CountPad.Infrastructure.Repositories
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
-
                 string sql = @"INSERT INTO Products (Id, Name, Description, Product_Type) 
                                             VALUES (@Id, @Name, @Description, @ProductType)";
 
                 int affectedRows = connection.Execute(sql,
                     new Dictionary<string, object>
-                        {
-                            { "Id", product.Id },
-                            { "Name", product.Name },
-                            { "Description", product.Description },
-                            { "ProductType", product.ProductType.ToString() }
-                        });
+                    {
+                        { "Id", product.Id },
+                        { "Name", product.Name },
+                        { "Description", product.Description },
+                        { "ProductType", product.ProductType.ToString() }
+                    });
 
                 return affectedRows;
             }
         }
 
-        public Task<int> AddRangeAsync(IEnumerable<Product> entities)
+        public async Task<int> AddRangeAsync(IEnumerable<Product> entities)
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"INSERT INTO Products (Id, Name, Description, Product_Type) 
+                                            VALUES (@Id, @Name, @Description, @ProductType)";
+                int affectedRows = connection.Execute(sql, entities);
+
+                return affectedRows;
+            }
         }
 
         public async Task<int> DeleteAsync(Guid id)
