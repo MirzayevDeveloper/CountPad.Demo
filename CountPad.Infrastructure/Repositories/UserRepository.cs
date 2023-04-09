@@ -57,7 +57,7 @@ namespace CountPad.Infrastructure.Repositories
                         Id = entity.Id,
                         Name = entity.Name,
                         Phone = entity.Phone,
-                        Status = entity.Status,
+                        Status = entity.Status.ToString(),
                         Password=entity.Password
                     });
                 }
@@ -102,7 +102,7 @@ namespace CountPad.Infrastructure.Repositories
                     Id = entity.Id,
                     Name=entity.Name,
                     Phone = entity.Phone,
-                    Status = entity.Status,
+                    Status = entity.Status.ToString(),
                     Password=entity.Password
                 });
             }
