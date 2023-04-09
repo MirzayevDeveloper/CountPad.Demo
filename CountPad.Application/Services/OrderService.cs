@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
@@ -19,5 +20,8 @@ namespace CountPad.Application.Services
 
         public async Task<int> AddOrderAsync(Order order) =>
             await this.orderRepository.AddAsync(order);
+
+        public async Task<int> AddRangeOrderAsync(IEnumerable<Order> entities) =>
+            await this.orderRepository.AddRangeAsync(entities);
     }
 }
