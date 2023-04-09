@@ -19,5 +19,6 @@ namespace CountPad.Application.Services
 
         public Task<int> AddUserAsync(User user) =>
             this.userRepository.AddAsync(user);
+
     }
 }

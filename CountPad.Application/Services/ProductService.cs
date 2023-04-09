@@ -21,6 +21,11 @@ namespace CountPad.Application.Services
         {
             return this.productRepository.AddAsync(product);
         }
+
+        public Task<int> DeleteProductAsync(int id)
+        {
+            return this.productRepository.DeleteAsync(id);
+        }
     }
 }
 
