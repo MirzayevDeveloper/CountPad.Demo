@@ -66,17 +66,16 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> DeleteAsync(Guid id)
+        public async Task<Order> GetByIdAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
                 connection.Open();
 
-                string query = "DELETE FROM orders WHERE id = @Id";
+                var query = "SELECT * FROM orders WHERE id = @Id";
 
-                int rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
-
-                return rowsAffected;
+                return await connection.QuerySingleOrDefaultAsync<Order>(
+                    query, new { Id = id });
             }
         }
 
@@ -89,19 +88,6 @@ namespace CountPad.Infrastructure.Repositories
                 var query = "SELECT * FROM orders";
 
                 return connection.Query<Order>(query).ToList();
-            }
-        }
-
-        public async Task<Order> GetByIdAsync(Guid id)
-        {
-            using (NpgsqlConnection connection = CreateConnection())
-            {
-                connection.Open();
-
-                var query = "SELECT * FROM orders WHERE id = @Id";
-
-                return await connection.QuerySingleOrDefaultAsync<Order>(
-                    query, new { Id = id });
             }
         }
 
@@ -120,6 +106,20 @@ namespace CountPad.Infrastructure.Repositories
                     PackageId = entity.Package.Id,
                     SoldId = entity.Sold.Id
                 });
+            }
+        }
+
+        public async Task<int> DeleteAsync(Guid id)
+        {
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
+
+                string query = "DELETE FROM orders WHERE id = @Id";
+
+                int rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
+
+                return rowsAffected;
             }
         }
     }

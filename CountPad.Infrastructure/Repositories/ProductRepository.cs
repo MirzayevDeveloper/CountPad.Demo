@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
@@ -38,27 +39,27 @@ namespace CountPad.Infrastructure.Repositories
 
         public Task<int> AddRangeAsync(IEnumerable<Product> entities)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(int id)
+        public Task<int> DeleteAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<List<Product>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Task<Product> GetByIdAsync(int id)
+        public Task<Product> GetByIdAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<int> UpdateAsync(Product entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

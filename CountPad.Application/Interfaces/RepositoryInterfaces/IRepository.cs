@@ -13,10 +13,10 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
     {
         Task<int> AddAsync(T entity);
         Task<int> AddRangeAsync(IEnumerable<T> entities);
-        Task<T> GetByIdAsync(Guid guid);
+        Task<T> GetByIdAsync(Guid id);
         Task<List<T>> GetAllAsync();
         Task<int> UpdateAsync(T entity);
-        Task<int> DeleteAsync(Guid guid);
+        Task<int> DeleteAsync(Guid id);
     }
 }
 
