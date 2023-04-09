@@ -34,6 +34,11 @@ namespace CountPad.Application.Services
             return this.productRepository.GetByIdAsync(id);
         }
 
+        public Task<List<Product>> GetAllProducts()
+        {
+            return this.productRepository.GetAllAsync();
+        }
+
         public Task<int> DeleteProductAsync(Guid id)
         {
             return this.productRepository.DeleteAsync(id);

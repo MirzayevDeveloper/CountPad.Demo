@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Products;
@@ -66,16 +67,23 @@ namespace CountPad.Infrastructure.Repositories
             {
                 string sql = @"Select * from Products WHERE ID=@id";
 
-                Product SelectedProduct = await connection.QuerySingleOrDefaultAsync(sql,
+                Product selectedProduct = await connection.QuerySingleOrDefaultAsync(sql,
                     new { Id = guid });
 
-                return SelectedProduct;
+                return selectedProduct;
             }
         }
 
-        public Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                string sql = @"Select * from Products";
+
+                List<Product> allProducts = connection.Query<Product>(sql).ToList();
+
+                return allProducts;
+            }
         }
 
         public Task<int> UpdateAsync(Product entity)
