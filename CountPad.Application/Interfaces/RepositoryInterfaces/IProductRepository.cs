@@ -12,4 +12,3 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
 
     }
 }
-

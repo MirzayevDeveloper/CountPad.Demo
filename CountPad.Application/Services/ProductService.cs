@@ -24,7 +24,7 @@ namespace CountPad.Application.Services
             return this.productRepository.AddAsync(product);
         }
 
-        public Task<int> AddProductsRangeAsync(IEnumerable<Product> products)
+        public Task<int> AddProductRangeAsync(IEnumerable<Product> products)
         {
             return this.productRepository.AddRangeAsync(products);
         }
