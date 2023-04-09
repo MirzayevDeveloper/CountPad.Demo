@@ -3,10 +3,9 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using CountPad.Domain.Models.Orders;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
 using CountPad.Domain.Models.Solds;
 
 namespace CountPad.Application.Interfaces.ServiceInterfaces

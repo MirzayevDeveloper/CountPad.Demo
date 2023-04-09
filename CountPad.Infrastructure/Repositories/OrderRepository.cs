@@ -51,18 +51,18 @@ namespace CountPad.Infrastructure.Repositories
 
                 int changedNumber = default;
 
-                    foreach (Order entity in entities)
+                foreach (Order entity in entities)
+                {
+                    changedNumber += await connection.ExecuteAsync(query, new
                     {
-                        changedNumber += await connection.ExecuteAsync(query, new
-                        {
-                            Id = entity.Id,
-                            Package = entity.Package.Id,
-                            Sold = entity.Sold.Id,
-                            Count = entity.Package.Count,
-                            SoldPrice = entity.Package.SalePrice
-                        });
-                    }
-                    return changedNumber;
+                        Id = entity.Id,
+                        Package = entity.Package.Id,
+                        Sold = entity.Sold.Id,
+                        Count = entity.Package.Count,
+                        SoldPrice = entity.Package.SalePrice
+                    });
+                }
+                return changedNumber;
             }
         }
 

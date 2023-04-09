@@ -8,7 +8,7 @@ using CountPad.Domain.Models.Orders;
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
     public interface IOrderRepository : IRepository<Order>
-    { 
-    
+    {
+
     }
 }

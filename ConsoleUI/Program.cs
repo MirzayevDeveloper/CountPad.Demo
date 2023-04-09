@@ -12,7 +12,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+
         }
 
         public static Filler<T> CreateObjectFiller<T>() where T : class

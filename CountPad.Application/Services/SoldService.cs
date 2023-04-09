@@ -1,14 +1,8 @@
-﻿// --------------------------------------------------------
-// Copyright (c) Coalition of Good-Hearted Engineers
-// Developed by CountPad Team
-// --------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
-using CountPad.Domain.Models.Orders;
 using CountPad.Domain.Models.Solds;
 
 namespace CountPad.Application.Services

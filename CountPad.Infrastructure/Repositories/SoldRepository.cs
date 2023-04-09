@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
-using CountPad.Domain.Models.Orders;
 using CountPad.Domain.Models.Solds;
 using Dapper;
 using Npgsql;
@@ -52,7 +51,7 @@ namespace CountPad.Infrastructure.Repositories
 
                 foreach (Sold entity in entities)
                 {
-                   rowsAffected = await connection.ExecuteAsync(query, new
+                    rowsAffected = await connection.ExecuteAsync(query, new
                     {
                         Id = entity.Id,
                         SoldDate = entity.SoldDate,
@@ -93,7 +92,7 @@ namespace CountPad.Infrastructure.Repositories
             using (NpgsqlConnection connection = CreateConnection())
             {
                 connection.Open();
-                
+
                 string query = "UPDATE classes SET sold_date = @SoldDate" +
                         "user_id = @UserId WHERE id = @Id";
 
