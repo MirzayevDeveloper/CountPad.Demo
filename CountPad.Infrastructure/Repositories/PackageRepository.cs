@@ -90,9 +90,9 @@ namespace CountPad.Infrastructure.Repositories
                 return await connection.ExecuteAsync(query, new
                 {
                    Id = entity.Id,
-                   Product=entity.Product,
+                   Product=entity.Product.Id,
                    Count=entity.Count,
-                   Distributor=entity.Distributor,
+                   Distributor=entity.Distributor.Id,
                    IncomingPrice=entity.IncomingPrice,
                    SalePrice=entity.SalePrice,
                    IncomingDate=entity.IncomingDate
