@@ -43,12 +43,13 @@ namespace EKundalik.ConsoleLayer
         {
             Console.Clear();
             Console.Write($"1.Create {name}" +
-                          $"\n2.Select {name}" +
-                          $"\n3.Update {name}" +
-                          $"\n4.Delete {name}\n" +
-                          $"5.Select All {name}s" +
-                          $"\n6.Add random {name}s" +
-                          $"\n7.Back\n\n" +
+                          $"\n2.Create Many {name}" +
+                          $"\n3.Select {name}" +
+                          $"\n4.Select All {name}s" +
+                          $"\n5.Update {name}" +
+                          $"\n5.Delete {name}" +
+                          $"\n7.Add random {name}s" +
+                          $"\n8.Back\n\n" +
                           $"choose option: ");
 
             string choose = Console.ReadLine();
