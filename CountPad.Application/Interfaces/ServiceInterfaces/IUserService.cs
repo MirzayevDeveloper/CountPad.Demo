@@ -10,8 +10,6 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
     public interface IUserService
     {
-        Task<int> AddUserAsync(User user)
-                    public
+        Task<int> AddUserAsync(User user);
     }
-
 }

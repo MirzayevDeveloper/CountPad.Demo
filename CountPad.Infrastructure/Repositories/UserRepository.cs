@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
@@ -40,7 +41,7 @@ namespace CountPad.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(int id)
+        public Task<int> DeleteAsync(Guid id)
         {
             throw new System.NotImplementedException();
         }
@@ -50,7 +51,7 @@ namespace CountPad.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public Task<User> GetByIdAsync(Guid id)
         {
             throw new System.NotImplementedException();
         }
