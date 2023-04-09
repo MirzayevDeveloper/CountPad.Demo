@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.MAUI", "CountPad.MAUI\CountPad.MAUI.csproj", "{4E396B3F-A94F-46BA-8020-117ED7CE7648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{CCF04D85-984D-4B88-BEC0-5237BEBDEB38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{CCF04D85-984D-4B88-BEC0-5237BEBDEB38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.Domain", "CountPad.Domain\CountPad.Domain.csproj", "{F0433333-0225-4E07-BFF2-D00FFEE40342}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountPad.Domain", "CountPad.Domain\CountPad.Domain.csproj", "{F0433333-0225-4E07-BFF2-D00FFEE40342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.Application", "CountPad.Application\CountPad.Application.csproj", "{65C1A979-5BC6-4B92-8DFA-816E91C38A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountPad.Application", "CountPad.Application\CountPad.Application.csproj", "{65C1A979-5BC6-4B92-8DFA-816E91C38A37}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountPad.Infrastructure", "CountPad.Infrastructure\CountPad.Infrastructure.csproj", "{47989F1B-C216-42C9-969D-7A4B064444FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.Infrastructure", "CountPad.Infrastructure\CountPad.Infrastructure.csproj", "{47989F1B-C216-42C9-969D-7A4B064444FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E396B3F-A94F-46BA-8020-117ED7CE7648}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{CCF04D85-984D-4B88-BEC0-5237BEBDEB38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCF04D85-984D-4B88-BEC0-5237BEBDEB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCF04D85-984D-4B88-BEC0-5237BEBDEB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
