@@ -11,6 +11,7 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     public interface IDistributorService
     {
         Task<int> AddDistributorAsync(Distributor distributor);
+
     }
 }
 

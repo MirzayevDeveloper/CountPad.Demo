@@ -13,12 +13,11 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     public interface IProductService
     {
         Task<int> AddProductAsync(Product product);
-        Task<int> AddProductsRangeAsync(IEnumerable<Product> products);
+        Task<int> AddProductRangeAsync(IEnumerable<Product> products);
         Task<Product> GetProductByIdAsync(Guid id);
         Task<List<Product>> GetAllProducts();
         Task<int> UpdateProductAsync(Product product);
         Task<int> DeleteProductAsync(Guid id);
-
     }
 }
 
