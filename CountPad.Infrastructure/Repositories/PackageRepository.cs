@@ -4,9 +4,12 @@
 // --------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
+using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Packages;
+using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
 using static Dapper.SqlMapper;
@@ -43,30 +46,37 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> AddRangeAsync(IEnumerable<Package> entities)
+        public async Task<int> AddRangeAsync(IEnumerable<Package> packages)
+        {
+            var tasks = packages.Select(p => AddAsync(p));
+            int[] results = await Task.WhenAll(tasks);
+            return results.Sum();
+        }
+
+        public async Task<int> DeleteAsync(int id)
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
                 connection.Open();
-                int affectedR = 0;
-                foreach (Package package in entities)
-                {
-                    int affectedR = await AddAsync(package);
-                }
 
-                return affectedR;
+                string query = @"DELETE FROM packages WHERE id = @Id";
+                int affectedRows = await connection.ExecuteAsync(query, new { Id = id });
+
+                return affectedRows;
             }
-            
         }
 
-        public Task<int> DeleteAsync(int id)
+        public async Task<List<Package>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
-        }
+            using (NpgsqlConnection connection = CreateConnection())
+            {
+                connection.Open();
 
-        public Task<List<Package>> GetAllAsync()
-        {
-            throw new System.NotImplementedException();
+                string query = @"SELECT * FROM packages";
+                List<Package> packages = await connection.QueryAsync<Package>(query);
+
+                return packages;
+            }
         }
 
         public Task<Package> GetByIdAsync(int id)
