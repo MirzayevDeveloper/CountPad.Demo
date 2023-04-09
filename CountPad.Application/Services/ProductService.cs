@@ -26,7 +26,7 @@ namespace CountPad.Application.Services
 
         public Task<int> AddRangeAsync(IEnumerable<Product> products)
         {
-            return this.AddRangeAsync(products);
+            return this.productRepository.AddRangeAsync(products);
         }
 
         public Task<int> DeleteProductAsync(Guid id)
