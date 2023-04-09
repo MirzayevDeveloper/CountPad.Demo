@@ -3,8 +3,8 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Users;
 

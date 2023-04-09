@@ -4,12 +4,14 @@
 // --------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Application.Services;
 using CountPad.Domain.Models.Products;
 using EKundalik.ConsoleLayer;
+using Newtonsoft.Json;
 
 namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
@@ -29,15 +31,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                 Console.Clear();
                 int choice = General.PrintCrudOptions(nameof(Product));
                 Console.Beep();
-                /*$"1.Create {name}" +
-                $"\n2.Create Many {name}" +
-                $"\n3.Select {name}" +
-                $"\n4.Select All {name}s" +
-                $"\n5.Update {name}" +
-                $"\n5.Delete {name}" +
-                $"\n7.Add random {name}s" +
-                $"\n8.Back\n\n" +
-                $"choose option: ");*/
+
                 switch (choice)
                 {
                     case 1:
@@ -54,7 +48,9 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 3:
                         {
-                            this.SelectProduct();
+                            Product maybeProduct = await this.SelectProduct();
+
+                            General.PrintObjectProperties(maybeProduct);
                         }
                         break;
                     case 4:
@@ -64,17 +60,19 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 5:
                         {
-
+                            await this.UpdateProduct();
                         }
                         break;
                     case 6:
                         {
-
+                            await this.productService
+                                .DeleteProductAsync(
+                                    this.DeleteProduct().Id);
                         }
                         break;
                     case 7:
                         {
-
+                            Console.WriteLine("WIP...");
                         }
                         break;
                     case 8:
@@ -83,6 +81,18 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                 }
                 General.Pause();
             }
+        }
+
+        private async Task WriteToFile(Product product)
+        {
+            File.WriteAllText("../../../ConsoleLayer/data.json",
+                JsonConvert.SerializeObject(product, Formatting.Indented));
+        }
+
+        private Product ReadFromFile()
+        {
+            return JsonConvert.DeserializeObject<Product>(
+                File.ReadAllText("../../../ConsoleLayer/data.json"));
         }
     }
 }

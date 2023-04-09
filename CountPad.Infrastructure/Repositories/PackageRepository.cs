@@ -45,35 +45,11 @@ namespace CountPad.Infrastructure.Repositories
             }
         }
 
-        public async Task<int> AddRangeAsync(IEnumerable<Package> packages) 
+        public async Task<int> AddRangeAsync(IEnumerable<Package> packages)
         {
-            await using (NpgsqlConnection connection = CreateConnection())
-            {
-                connection.Open();
-
-                string query = @"INSERT INTO packages 
-                                (id, product_id, count, distributor_id, incoming_price, 
-                                sale_price, incoming_date)
-                                 VALUES (@Id, @Product, @Count, @Distributor,
-                                @IncomingPrice, @SalePrice, @IncomingDate)";
-
-                int rowsAffected = default;
-
-                foreach (Package entity in packages)
-                {
-                    rowsAffected = await connection.ExecuteAsync(query, new
-                    {
-                        Id = entity.Id,
-                        Product = entity.Product.Id,
-                        Count = entity.Count,
-                        Distributor = entity.Distributor.Id,
-                        IncomingPrice = entity.IncomingPrice,
-                        SalePrice = entity.SalePrice,
-                        IncomingDate = entity.IncomingDate
-                    });
-                }
-                return rowsAffected;
-            }
+            var tasks = packages.Select(p => AddAsync(p));
+            int[] results = await Task.WhenAll(tasks);
+            return results.Sum();
         }
 
         public async Task<List<Package>> GetAllAsync()
@@ -111,17 +87,17 @@ namespace CountPad.Infrastructure.Repositories
 
                 return await connection.ExecuteAsync(query, new
                 {
-                   Id = entity.Id,
-                   Product=entity.Product.Id,
-                   Count=entity.Count,
-                   Distributor=entity.Distributor.Id,
-                   IncomingPrice=entity.IncomingPrice,
-                   SalePrice=entity.SalePrice,
-                   IncomingDate=entity.IncomingDate
+                    Id = entity.Id,
+                    Product = entity.Product.Id,
+                    Count = entity.Count,
+                    Distributor = entity.Distributor.Id,
+                    IncomingPrice = entity.IncomingPrice,
+                    SalePrice = entity.SalePrice,
+                    IncomingDate = entity.IncomingDate
                 });
             }
         }
-      
+
         public async Task<int> DeleteAsync(Guid id)
         {
             using (NpgsqlConnection connection = CreateConnection())

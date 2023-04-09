@@ -3,10 +3,11 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using EKundalik.ConsoleLayer;
-using System.Threading.Tasks;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using CountPad.Domain.Models.Products;
+using EKundalik.ConsoleLayer;
 
 namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
@@ -15,24 +16,22 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
         private async Task<Product> UpdateProduct()
         {
             bool isActive = true;
-            Product student = SelectStudent().Result;
+            Product product = SelectProduct().Result;
 
-            if (student != null)
+            if (product != null)
             {
-                await WriteToFile(student);
+                await WriteToFile(product);
             }
 
-            while (isActive && student != null)
+            while (isActive && product != null)
             {
                 if (ReadFromFile().Id != default)
                 {
                     Console.Clear();
-                    General.PrintObjectProperties(student);
+                    General.PrintObjectProperties(product);
 
-                    Console.Write("1.Username\n" +
-                                    "2.FullName\n" +
-                                    "3.BirthDate\n" +
-                                    "4.Exit\n" +
+                    Console.Write("1.Name\n" +
+                                  "2.Description\n" +
                                     "Which property do you want to change: ");
 
                     string choose = Console.ReadLine();
@@ -45,46 +44,36 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                     {
                         case 1:
                             {
-                                Console.Write("Create new username: ");
-                                string user = Console.ReadLine();
+                                Console.Write("Enter a new Name: ");
+                                string name = Console.ReadLine();
 
-                                student.UserName = user;
+                                product.Name = name;
                             }
                             break;
                         case 2:
                             {
-                                Console.Write("Enter new Full name: ");
-                                string name = Console.ReadLine();
+                                Console.Write("Enter new Description: ");
+                                string desc = Console.ReadLine();
 
-                                student.FullName = name;
+                                product.Description = desc;
                             }
                             break;
                         case 3:
-                            {
-                                Console.Write("Enter a new birth date: ");
-                                string birth = Console.ReadLine();
-                                DateTime birthDate;
-                                DateTime.TryParse(birth, out birthDate);
-
-                                student.BirthDate = birthDate;
-                            }
-                            break;
-                        case 4:
                             isActive = false;
                             break;
                     }
-                    await WriteToFile(student);
+                    await WriteToFile(product);
 
                     if (choice != 4 && choice != 0) General.Sleep();
                 }
             }
             Console.Clear();
-            Student updatedStudent = ReadFromFile();
+            Product updatedProduct = ReadFromFile();
 
             File.WriteAllText(
                 "../../../ConsoleLayer/data.json", "");
 
-            return updatedStudent;
+            return updatedProduct;
         }
     }
 }

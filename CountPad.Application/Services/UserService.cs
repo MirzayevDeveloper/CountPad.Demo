@@ -22,19 +22,19 @@ namespace CountPad.Application.Services
         public Task<int> AddUserAsync(User user) =>
             this.userRepository.AddAsync(user);
 
-        public Task<int> AddRangeUserAsync(IEnumerable<User> users)=>
+        public Task<int> AddRangeUserAsync(IEnumerable<User> users) =>
             this.userRepository.AddRangeAsync(users);
 
-        public Task<List<User>> GetAllUsersAsync()=>
+        public Task<List<User>> GetAllUsersAsync() =>
             this.userRepository.GetAllAsync();
 
-        public Task<User> GetUserByIdAsync(Guid id)=>
+        public Task<User> GetUserByIdAsync(Guid id) =>
             this.userRepository.GetByIdAsync(id);
 
-        public Task<int> UpdateUserAsync(User user)=>
+        public Task<int> UpdateUserAsync(User user) =>
             this.userRepository.UpdateAsync(user);
 
-        public Task<int> DeleteUserAsync(Guid id)=>
+        public Task<int> DeleteUserAsync(Guid id) =>
             this.userRepository.DeleteAsync(id);
     }
 }

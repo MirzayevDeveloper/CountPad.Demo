@@ -13,18 +13,19 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
     public partial class ProductUI
     {
-        public string SelectProduct()
+        public async Task<Product> SelectProduct()
         {
             Console.Write("enter product id: ");
             string productId = Console.ReadLine();
+            Guid id;
+            Guid.TryParse(productId, out id);
 
-
-            return productId;
+            return await this.productService.GetProductByIdAsync(id);
         }
 
         public async void SelectAllProducts()
         {
-            List<Product> products = 
+            List<Product> products =
                 await this.productService.GetAllProducts();
 
             General.SelectAll(products);
