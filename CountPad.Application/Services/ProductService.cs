@@ -19,35 +19,22 @@ namespace CountPad.Application.Services
         public ProductService(IProductRepository productRepository) =>
             this.productRepository = productRepository;
 
-        public Task<int> AddProductAsync(Product product)
-        {
-            return this.productRepository.AddAsync(product);
-        }
+        public Task<int> AddProductAsync(Product product) =>
+            this.productRepository.AddAsync(product);
 
-        public Task<int> AddProductRangeAsync(IEnumerable<Product> products)
-        {
-            return this.productRepository.AddRangeAsync(products);
-        }
+        public Task<int> AddProductRangeAsync(IEnumerable<Product> products) =>
+            this.productRepository.AddRangeAsync(products);
 
-        public Task<Product> GetProductByIdAsync(Guid id)
-        {
-            return this.productRepository.GetByIdAsync(id);
-        }
+        public Task<Product> GetProductByIdAsync(Guid id) =>
+            this.productRepository.GetByIdAsync(id);
+      
+        public Task<List<Product>> GetAllProducts() =>
+            this.productRepository.GetAllAsync();
+        public Task<int> UpdateProductAsync(Product product) => 
+            this.productRepository.UpdateAsync(product);
 
-        public Task<List<Product>> GetAllProducts()
-        {
-            return this.productRepository.GetAllAsync();
-        }
-
-        public Task<int> UpdateProductAsync(Product product)
-        {
-            return this.productRepository.UpdateAsync(product);
-        }
-
-        public Task<int> DeleteProductAsync(Guid id)
-        {
-            return this.productRepository.DeleteAsync(id);
-        }
+        public Task<int> DeleteProductAsync(Guid id) => 
+            this.productRepository.DeleteAsync(id);
 
     }
 }
