@@ -1,7 +1,3 @@
-using CountPad.UI.Data;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-
 namespace CountPad.UI
 {
     public class Program
@@ -12,8 +8,6 @@ namespace CountPad.UI
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
 
             var app = builder.Build();
 
@@ -26,13 +20,13 @@ namespace CountPad.UI
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.MapBlazorHub();
-            app.MapFallbackToPage("/_Host");
+            app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.Run();
         }
