@@ -5,6 +5,7 @@
 
 using System;
 using ConsoleUI.ConsoleLayer.ProductMenu;
+using ConsoleUI.ConsoleLayer.UserMenu;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Infrastructure.Repositories;
 
@@ -40,6 +41,11 @@ namespace ConsoleUI
                         {
                             IUserRepository userRepository =
                                 new UserRepository();
+
+                            var userUI = 
+                                new UserUI(userRepository);
+
+                            userUI.UserCase().Wait();
                         }
                         break;
                     case 2:
