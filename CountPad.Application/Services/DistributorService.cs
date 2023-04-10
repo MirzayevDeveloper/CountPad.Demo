@@ -25,16 +25,16 @@ namespace CountPad.Application.Services
         public async Task<int> AddDistributorRangeAsync(IEnumerable<Distributor> distributors) =>
             await this.distributorRepository.AddRangeAsync(distributors);
 
-        public async Task<int> DeleteDistributorAsync(Guid id)
-        => await this.distributorRepository.DeleteAsync(id);
+        public async Task<int> DeleteDistributorAsync(Guid id) =>
+            await this.distributorRepository.DeleteAsync(id);
 
         public async Task<List<Distributor>> GetAllDistributors() =>
             await this.distributorRepository.GetAllAsync();
 
-        public async Task<Distributor> GetDistributorByIdAsync(Guid id) => 
+        public async Task<Distributor> GetDistributorByIdAsync(Guid id) =>
             await this.distributorRepository.GetByIdAsync(id);
 
-        public async Task<int> UpdateDistributorAsync(Distributor distributor) => 
+        public async Task<int> UpdateDistributorAsync(Distributor distributor) =>
             await this.distributorRepository.UpdateAsync(distributor);
     }
 }
