@@ -27,13 +27,14 @@ namespace CountPad.Application.Services
 
         public Task<Product> GetProductByIdAsync(Guid id) =>
             this.productRepository.GetByIdAsync(id);
-      
+
         public Task<List<Product>> GetAllProducts() =>
             this.productRepository.GetAllAsync();
-        public Task<int> UpdateProductAsync(Product product) => 
+
+        public Task<int> UpdateProductAsync(Product product) =>
             this.productRepository.UpdateAsync(product);
 
-        public Task<int> DeleteProductAsync(Guid id) => 
+        public Task<int> DeleteProductAsync(Guid id) =>
             this.productRepository.DeleteAsync(id);
 
     }
