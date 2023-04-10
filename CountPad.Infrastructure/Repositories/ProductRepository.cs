@@ -99,7 +99,7 @@ namespace CountPad.Infrastructure.Repositories
         {
             using (NpgsqlConnection connection = CreateConnection())
             {
-                string sql = @"Delete from Products WHERE ID=@id";
+                string sql = @"Delete from Products WHERE id = @Id";
 
                 int affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
 

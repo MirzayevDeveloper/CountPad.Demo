@@ -11,7 +11,8 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
     {
         public void AddRangeProduct()
         {
-            Console.WriteLine("Add range products in progress...");
+            bool isActive = true;
+
         }
     }
 }
