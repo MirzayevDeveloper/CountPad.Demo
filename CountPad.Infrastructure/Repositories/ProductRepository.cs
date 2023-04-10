@@ -56,7 +56,7 @@ namespace CountPad.Infrastructure.Repositories
                 string sql = @"select * from products where id = @Id";
 
                 return await connection
-                    .QuerySingleOrDefaultAsync(sql, new { Id = id });
+                    .QuerySingleOrDefaultAsync<Product>(sql, new { Id = id });
             }
         }
 
