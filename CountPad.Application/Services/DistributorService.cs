@@ -19,35 +19,23 @@ namespace CountPad.Application.Services
         public DistributorService(IDistributorRepository distributorRepository) =>
             this.distributorRepository = distributorRepository;
 
-        public async Task<int> AddDistributorAsync(Distributor distributor)
-        {
-            return await this.distributorRepository.AddAsync(distributor);
-        }
+        public async Task<int> AddDistributorAsync(Distributor distributor) =>
+            await this.distributorRepository.AddAsync(distributor);
 
-        public async Task<int> AddDistributorRangeAsync(IEnumerable<Distributor> distributors)
-        {
-            return await this.distributorRepository.AddRangeAsync(distributors);
-        }
+        public async Task<int> AddDistributorRangeAsync(IEnumerable<Distributor> distributors) =>
+            await this.distributorRepository.AddRangeAsync(distributors);
 
         public async Task<int> DeleteDistributorAsync(Guid id)
-        {
-            return await this.distributorRepository.DeleteAsync(id);
-        }
+        => await this.distributorRepository.DeleteAsync(id);
 
-        public async Task<List<Distributor>> GetAllDistributors()
-        {
-            return await this.distributorRepository.GetAllAsync();
-        }
+        public async Task<List<Distributor>> GetAllDistributors() =>
+            await this.distributorRepository.GetAllAsync();
 
-        public async Task<Distributor> GetDistributorByIdAsync(Guid id)
-        {
-            return await this.distributorRepository.GetByIdAsync(id);
-        }
+        public async Task<Distributor> GetDistributorByIdAsync(Guid id) => 
+            await this.distributorRepository.GetByIdAsync(id);
 
-        public async Task<int> UpdateDistributorAsync(Distributor distributor)
-        {
-            return await this.distributorRepository.UpdateAsync(distributor);
-        }
+        public async Task<int> UpdateDistributorAsync(Distributor distributor) => 
+            await this.distributorRepository.UpdateAsync(distributor);
     }
 }
 
