@@ -38,39 +38,24 @@ namespace ConsoleUI.ConsoleLayer.UserMenu
                         break;
                     case 2:
                         {
-                            this.AddUser();
-                        }
-                        break;
-                    case 3:
-                        {
                             User maybeUser = await this.SelectUser();
 
                             General.PrintObjectProperties(maybeUser);
                         }
                         break;
-                    case 4:
-                        {
-                            this.SelectUser();
-                        }
-                        break;
-                    case 5:
+                    case 3:
                         {
                             await this.UpdateUser();
                         }
                         break;
-                    case 6:
+                    case 4:
                         {
                             await this.userService
-                                .DeleteUserAsync(
-                                    this.DeleteUser().Id);
+                                  .DeleteUserAsync(
+                                      this.DeleteUser().Id);
                         }
                         break;
-                    case 7:
-                        {
-                            Console.WriteLine("WIP...");
-                        }
-                        break;
-                    case 8:
+                    case 5:
                         isActive = false;
                         break;
                 }
