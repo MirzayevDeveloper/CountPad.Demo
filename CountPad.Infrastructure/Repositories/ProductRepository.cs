@@ -77,16 +77,17 @@ namespace CountPad.Infrastructure.Repositories
             using (NpgsqlConnection connection = CreateConnection())
             {
                 string sql = @"Update Products
-                                SET Name=@Name,
-                                Product_Type=@Product_Type,
-                                Description=@Description
-                                WHERE ID=@id";
+                                SET name = @Name,
+                                product_type = @ProductType,
+                                description = @Description
+                                WHERE id = @Id";
 
-                var affectedRows = await connection.ExecuteAsync(sql,
+                int affectedRows = await connection.ExecuteAsync(sql,
                     new
                     {
+                        Id = product.Id,
                         Name = product.Name,
-                        Product_Type = product.ProductType,
+                        ProductType = product.ProductType.ToString(),
                         Description = product.Description
                     });
 

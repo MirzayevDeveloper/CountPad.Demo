@@ -32,6 +32,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
 
                     Console.Write("1.Name\n" +
                                   "2.Description\n" +
+                                  "3.Back\n" +
                                     "Which property do you want to change: ");
 
                     string choose = Console.ReadLine();
@@ -64,7 +65,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                     }
                     await WriteToFile(product);
 
-                    if (choice != 4 && choice != 0) General.Sleep();
+                    if (choice != 3 && choice != 0) General.Sleep();
                 }
             }
             Console.Clear();

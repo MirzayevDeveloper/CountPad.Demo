@@ -60,7 +60,10 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 5:
                         {
-                            await this.UpdateProduct();
+                            Product updatedProduct =
+                                await this.UpdateProduct();
+
+                            await this.productService.UpdateProductAsync(updatedProduct);
                         }
                         break;
                     case 6:
