@@ -9,5 +9,6 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
     public interface IUserRepository : IRepository<User>
     {
+
     }
 }

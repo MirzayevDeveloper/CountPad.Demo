@@ -3,11 +3,11 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using CountPad.Domain.Models.Products;
+using CountPad.Domain.Models.Orders;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IOrderRepository : IRepository<Order>
     {
 
     }

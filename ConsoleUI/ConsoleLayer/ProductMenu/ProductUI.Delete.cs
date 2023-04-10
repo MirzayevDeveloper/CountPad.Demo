@@ -5,10 +5,15 @@
 
 using CountPad.Domain.Models.Products;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
-    public interface IProductRepository : IRepository<Product>
+    public partial class ProductUI
     {
+        private Product DeleteProduct()
+        {
+            Product product = SelectProduct().Result ?? new();
 
+            return product;
+        }
     }
 }

@@ -6,17 +6,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CountPad.Domain.Models.Users;
+using CountPad.Domain.Models.Solds;
 
 namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IUserService
+    public interface ISoldService
     {
-        Task<int> AddUserAsync(User user);
-        Task<int> AddRangeUserAsync(IEnumerable<User> users);
-        Task<User> GetUserByIdAsync(Guid id);
-        Task<List<User>> GetAllUsersAsync();
-        Task<int> UpdateUserAsync(User user);
-        Task<int> DeleteUserAsync(Guid id);
+        Task<int> AddSoldAsync(Sold sold);
+        Task<int> AddRangeSoldAsync(IEnumerable<Sold> solds);
+        Task<Sold> GetSoldByIdAsync(Guid id);
+        Task<List<Sold>> GetAllSoldsAsync();
+        Task<int> UpdateSoldAsync(Sold sold);
+        Task<int> DeleteSoldAsync(Guid id);
     }
 }

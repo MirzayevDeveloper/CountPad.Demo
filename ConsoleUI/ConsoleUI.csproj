@@ -12,6 +12,7 @@
     <ProjectReference Include="..\CountPad.Infrastructure\CountPad.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Tynamix.ObjectFiller" Version="1.5.8" />
   </ItemGroup>
 </Project>

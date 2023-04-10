@@ -3,12 +3,15 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using CountPad.Domain.Models.Products;
+using System;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
-    public interface IProductRepository : IRepository<Product>
+    public partial class ProductUI
     {
-
+        public void AddRangeProduct()
+        {
+            Console.WriteLine("Add range products in progress...");
+        }
     }
 }
