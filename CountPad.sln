@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.Application", "Cou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountPad.Infrastructure", "CountPad.Infrastructure\CountPad.Infrastructure.csproj", "{47989F1B-C216-42C9-969D-7A4B064444FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountPad.UI", "CountPad.UI\CountPad.UI.csproj", "{F04FABD7-C53A-44F2-8549-96A39BA2953D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{47989F1B-C216-42C9-969D-7A4B064444FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47989F1B-C216-42C9-969D-7A4B064444FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47989F1B-C216-42C9-969D-7A4B064444FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F04FABD7-C53A-44F2-8549-96A39BA2953D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F04FABD7-C53A-44F2-8549-96A39BA2953D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F04FABD7-C53A-44F2-8549-96A39BA2953D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F04FABD7-C53A-44F2-8549-96A39BA2953D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
