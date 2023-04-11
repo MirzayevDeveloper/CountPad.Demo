@@ -11,8 +11,8 @@ namespace ConsoleUI.ConsoleLayer.UserMenu
             Console.Write("Enter User name: ");
             string UserName = Console.ReadLine();
 
-            Console.Write("Choose User option: ");
-            string UserOption = Console.ReadLine();
+            //Console.Write("Choose User option: ");
+            //string UserOption = Console.ReadLine();
 
             Console.Write("Enter Phone number: ");
             string UserPhone = Console.ReadLine();
@@ -20,17 +20,13 @@ namespace ConsoleUI.ConsoleLayer.UserMenu
             Console.Write("Enter Password : ");
             string UserPassword = Console.ReadLine();
 
-            Console.Write("Status :\n1)Manager\n2)Saller\n3)Storekeeper");
+            Console.Write("Status :\n1)Saller\n2)Manager\n3)Storekeeper\nTanlang : ");
             int status;
             while (!int.TryParse(Console.ReadLine(), out status) || status < 1 || status > 4)
             {
-
-                Console.Clear();
-                Console.Write("Status :\n1)Manager\n2)Saller\n3)Storekeeper");
+                Console.Write("Status :\n1)Saller\n2)Manager\n3)Storekeeper\nTanlang : ");
             }
 
-            int choose;
-            int.TryParse(UserOption, out choose);
 
             var User = new User()
             {

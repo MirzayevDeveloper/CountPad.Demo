@@ -42,7 +42,7 @@ namespace ConsoleUI
                             IUserRepository userRepository =
                                 new UserRepository();
 
-                            var userUI = 
+                            var userUI =
                                 new UserUI(userRepository);
 
                             userUI.UserCase().Wait();
