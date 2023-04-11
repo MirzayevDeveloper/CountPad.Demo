@@ -25,7 +25,7 @@ namespace ConsoleUI.ConsoleLayer.UserMenu
                     Console.Clear();
                     General.PrintObjectProperties(User);
 
-                    Console.Write("1.Name\n" +
+                    Console.Write("1.Name\n2.Phone Number\n3.User Status\n4.Passeord\n5.Exit" +
                                     "Which property do you want to change: ");
 
                     string choose = Console.ReadLine();
@@ -46,9 +46,35 @@ namespace ConsoleUI.ConsoleLayer.UserMenu
                             break;
                         case 2:
                             {
-                                isActive = false;
-                                break;
+                                Console.Write("Enter Phone number: ");
+                                string UserPhone = Console.ReadLine();
+                                User.Phone = UserPhone;
                             }
+                            break;
+                            case 3:
+                            {
+                                Console.Write("Status :\n1)Saller\n2)Manager\n3)Storekeeper\nTanlang : ");
+                                int status;
+                                while (!int.TryParse(Console.ReadLine(), out status) || status < 1 || status > 4)
+                                {
+                                    Console.Write("Status :\n1)Saller\n2)Manager\n3)Storekeeper\nTanlang : ");
+                                }
+                                User.Status = (Status)status;
+                            }
+                            break;
+                            case 4:
+                            {
+                                Console.Write("Enter Password : ");
+                                string UserPassword = Console.ReadLine();
+                                User.Password = UserPassword;
+                            }
+                            break;
+                            case 5:
+                            {
+                                isActive = false;
+                            }
+                            break;
+
                     }
                     await WriteToFile(User);
 
