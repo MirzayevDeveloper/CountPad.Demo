@@ -8,6 +8,16 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
 using System.IO;
+using System.Xml.Linq;
+//($"1.     Create {name}" +
+//$"\n2.    Create Many {name}" +
+//$"\n3.    Select {name}" +
+//$"\n4.    Select All {name}s" +
+//$"\n5.    Update {name}" +
+//$"\n6.    Delete {name}" +
+//$"\n7.    Add random {name}s" +
+//$"\n8.    Back\n\n" +
+//$"        choose option: ");
 
 namespace ConsoleUI.ConsoleLayer.DistributorMenu
 {
@@ -39,7 +49,7 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
                         break;
                     case 2:
                         {
-                            //this.AddRangeDistributor();
+                            this.AddDistributorRange();
                         }
                         break;
                     case 3:
