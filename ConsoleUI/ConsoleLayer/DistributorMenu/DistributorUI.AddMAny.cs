@@ -17,7 +17,8 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
             List<Distributor> distributors = new();
             for (int i = 0; i < distributorsNumber; i++)
             {
-                distributors.Add(CreateObjectFiller)
+                this.distributorService.AddDistributorAsync(
+                    General.CreateObjectFiller<Distributor>().Create());
             }
         }
     }

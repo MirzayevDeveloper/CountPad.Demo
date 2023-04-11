@@ -39,31 +39,31 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
                         break;
                     case 2:
                         {
-                            this.AddRangeDistributor();
+                            //this.AddRangeDistributor();
                         }
                         break;
                     case 3:
                         {
-                            Distributor maybeDistributor = await this.SelectDistributor();
+                            //Distributor maybeDistributor = await this.SelectDistributor();
 
-                            General.PrintObjectProperties(maybeDistributor);
+                            //General.PrintObjectProperties(maybeDistributor);
                         }
                         break;
                     case 4:
                         {
-                            this.SelectAllDistributors();
+                            //this.SelectAllDistributors();
                         }
                         break;
                     case 5:
                         {
-                            await this.UpdateDistributor();
+                            //await this.UpdateDistributor();
                         }
                         break;
                     case 6:
                         {
-                            await this.distributorService
+                            /*await this.distributorService
                                 .DeleteDistributorAsync(
-                                    this.DeleteDistributor().Id);
+                                    this.DeleteDistributor().Id);*/
                         }
                         break;
                     case 7:
@@ -92,5 +92,5 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
         }
     }
 }
-}
+
 
