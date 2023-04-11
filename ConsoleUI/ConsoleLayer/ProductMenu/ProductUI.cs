@@ -45,7 +45,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 2:
                         {
-                            this.AddRangeProduct();
+                            await this.AddRangeProductAsync();
                         }
                         break;
                     case 3:
