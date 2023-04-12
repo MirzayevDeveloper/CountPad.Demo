@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Domain.Models.Distributors;
-using CountPad.Domain.Models.Products;
 using Dapper;
 using Npgsql;
 

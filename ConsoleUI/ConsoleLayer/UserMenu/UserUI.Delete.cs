@@ -1,5 +1,4 @@
-﻿using CountPad.Domain.Models.Products;
-using CountPad.Domain.Models.Users;
+﻿using CountPad.Domain.Models.Users;
 
 namespace ConsoleUI.ConsoleLayer.UserMenu
 {

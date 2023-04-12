@@ -1,9 +1,8 @@
-﻿using CountPad.Domain.Models.Users;
-using System.Threading.Tasks;
-using System;
-using CountPad.Domain.Models.Products;
-using EKundalik.ConsoleLayer;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CountPad.Domain.Models.Users;
+using EKundalik.ConsoleLayer;
 
 namespace ConsoleUI.ConsoleLayer.UserMenu
 {

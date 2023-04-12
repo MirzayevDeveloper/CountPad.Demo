@@ -7,7 +7,7 @@ namespace CountPad.Domain.Models.Users
 {
     public enum Status
     {
-        Saller=1,
+        Saller = 1,
         Manager,
         Storekeeper
     }
