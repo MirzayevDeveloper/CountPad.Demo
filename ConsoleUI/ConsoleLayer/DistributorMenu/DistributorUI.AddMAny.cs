@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
-using EKundalik.ConsoleLayer;
 namespace ConsoleUI.ConsoleLayer.DistributorMenu
 {
     public partial class DistributorUI

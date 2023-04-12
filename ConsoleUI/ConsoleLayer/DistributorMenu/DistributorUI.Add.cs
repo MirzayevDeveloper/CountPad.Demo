@@ -1,8 +1,6 @@
 ﻿using System;
-using CountPad.Domain.Models.Products;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
-using System.Xml.Linq;
 
 namespace ConsoleUI.ConsoleLayer.DistributorMenu
 {
