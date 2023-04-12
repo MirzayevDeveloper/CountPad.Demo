@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
 using EKundalik.ConsoleLayer;
 namespace ConsoleUI.ConsoleLayer.DistributorMenu
 {
     public partial class DistributorUI
     {
-        public DistributorUI()
+
+        private async Task<List<Distributor>> AddDistributorRange()
         {
             Console.Write("How many distributors you want to add : ");
             string distributorNum = Console.ReadLine();
@@ -17,9 +19,11 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
             List<Distributor> distributors = new();
             for (int i = 0; i < distributorsNumber; i++)
             {
-                this.distributorService.AddDistributorAsync(
-                    General.CreateObjectFiller<Distributor>().Create());
+                Distributor distributor = await this.AddDistributor();
+                distributors.Add(distributor);
             }
+
+            return distributors;
         }
     }
 }
