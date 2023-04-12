@@ -30,6 +30,6 @@ namespace CountPad.Application.Services
             await this.soldRepository.GetByIdAsync(id);
 
         public async Task<int> UpdateSoldAsync(Sold sold) =>
-            await this.UpdateSoldAsync(sold);
+            await this.soldRepository.UpdateAsync(sold);
     }
 }

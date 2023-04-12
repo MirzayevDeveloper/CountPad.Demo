@@ -36,19 +36,22 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                 {
                     case 1:
                         {
-                            Product product = await this.AddProduct();
+                            Product product = 
+                                await this.AddProduct();
 
-                            await this.productService.AddProductAsync(product);
+                            await this.productService
+                                .AddProductAsync(product);
                         }
                         break;
                     case 2:
                         {
-                            this.AddRangeProduct();
+                            await this.AddRangeProductAsync();
                         }
                         break;
                     case 3:
                         {
-                            Product maybeProduct = await this.SelectProduct();
+                            Product maybeProduct = 
+                                await this.SelectProduct();
 
                             General.PrintObjectProperties(maybeProduct);
                         }
@@ -60,7 +63,11 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 5:
                         {
-                            await this.UpdateProduct();
+                            Product updatedProduct =
+                                await this.UpdateProduct();
+
+                            await this.productService
+                                .UpdateProductAsync(updatedProduct);
                         }
                         break;
                     case 6:
