@@ -1,14 +1,12 @@
 using CountPad.Application.Interfaces.RepositoryInterfaces;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Application.Services;
-using CountPad.Domain.Models.Products;
 using CountPad.Infrastructure.Repositories;
 
 namespace CountPad.UI.Data
 {
     public class ProductServices
     {
-
         private readonly IProductRepository productRepository;
         private readonly IProductService productService;
 
