@@ -79,7 +79,7 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
                         break;
                     case 7:
                         {
-                            Console.WriteLine("WIP...");
+                            await this.AddRangeProductAsync();
                         }
                         break;
                     case 8:

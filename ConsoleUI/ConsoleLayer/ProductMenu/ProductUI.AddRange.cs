@@ -5,6 +5,8 @@
 
 using System;
 using System.Threading.Tasks;
+using CountPad.Domain.Models.Products;
+using EKundalik.ConsoleLayer;
 
 namespace ConsoleUI.ConsoleLayer.ProductMenu
 {
@@ -22,7 +24,8 @@ namespace ConsoleUI.ConsoleLayer.ProductMenu
 
                 for (int i = 0; i < number; i++)
                 {
-                    await this.AddProduct();
+                    await this.productService.AddProductAsync(
+                        General.CreateObjectFiller<Product>().Create());
                 }
             }
         }
