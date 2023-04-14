@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
 using System.IO;
 using System.Xml.Linq;
+using System.Collections;
+using System.Collections.Generic;
 //($"1.     Create {name}" +
 //$"\n2.    Create Many {name}" +
 //$"\n3.    Select {name}" +
@@ -49,14 +51,18 @@ namespace ConsoleUI.ConsoleLayer.DistributorMenu
                         break;
                     case 2:
                         {
-                            this.AddDistributorRange();
+                            IEnumerable<Distributor> distributors =
+                                await this.AddDistributorRange();
+
+                            await this.distributorService
+                                .AddDistributorRangeAsync(distributors);
                         }
                         break;
                     case 3:
                         {
-                            //Distributor maybeDistributor = await this.SelectDistributor();
+                            Distributor maybeDistributor = await this.SelectDistributor();
 
-                            //General.PrintObjectProperties(maybeDistributor);
+                            General.PrintObjectProperties(maybeDistributor);
                         }
                         break;
                     case 4:
