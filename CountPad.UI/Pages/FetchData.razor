@@ -1,14 +1,14 @@
 ﻿@page "/fetchdata"
 @using CountPad.UI.Data
-@inject WeatherForecastService ForecastService
+@inject ProductServices ProductServices
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>Products</PageTitle>
 
-<h1>Weather forecast</h1>
+<h1>Products</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (products == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -24,7 +24,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in products)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -38,10 +38,10 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private ProductServices[]? products;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+        products = await ProductServices.GetProductsAsync();
     }
 }
