@@ -13,7 +13,6 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     public interface IDistributorService
     {
         Task<int> AddDistributorAsync(Distributor distributor);
-        Task<int> AddDistributorRangeAsync(IEnumerable<Distributor> distributors);
         Task<Distributor> GetDistributorByIdAsync(Guid id);
         Task<List<Distributor>> GetAllDistributors();
         Task<int> UpdateDistributorAsync(Distributor distributor);
