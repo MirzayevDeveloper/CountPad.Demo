@@ -4,19 +4,18 @@
 // --------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
-    public interface IRepository<T>
-    {
-        Task<int> AddAsync(T entity);
-        Task<int> AddRangeAsync(IEnumerable<T> entities);
-        Task<T> GetByIdAsync(Guid id);
-        Task<List<T>> GetAllAsync();
-        Task<int> UpdateAsync(T entity);
-        Task<int> DeleteAsync(Guid id);
-    }
+	public interface IRepository<T>
+	{
+		ValueTask<T> AddAsync(T entity);
+		ValueTask<T> GetByIdAsync(Guid id);
+		IQueryable<T> GetAllAsync();
+		ValueTask<T> UpdateAsync(T entity);
+		ValueTask<T> DeleteAsync(Guid id);
+	}
 }
 

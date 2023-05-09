@@ -9,6 +9,5 @@ namespace CountPad.Application.Interfaces.RepositoryInterfaces
 {
     public interface IProductRepository : IRepository<Product>
     {
-
     }
 }
