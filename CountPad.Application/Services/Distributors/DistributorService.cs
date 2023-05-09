@@ -50,9 +50,8 @@ namespace CountPad.Application.Services
 
         public async ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor)
         {
-            var entity = await _context.Distributors.FindAsync(distributor.Id);
-                       
-
+          throw new NotImplementedException();
+                                 
         
         }
     }
