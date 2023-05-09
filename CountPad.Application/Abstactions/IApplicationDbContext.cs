@@ -1,4 +1,9 @@
-﻿using System.Threading;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System.Threading;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Orders;
