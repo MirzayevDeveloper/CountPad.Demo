@@ -15,7 +15,7 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     {
         ValueTask<Order> AddOrderAsync(Order order);
         ValueTask<Order> GetOrderByIdAsync(Guid id);
-        ValueTask<IQueryable<Order>> GetAllOrdersAsync();
+        IQueryable<Order> GetAllOrdersAsync();
         ValueTask<Order> UpdateOrderAsync(Order order);
         ValueTask<Order> DeleteOrderAsync(Guid id);
     }

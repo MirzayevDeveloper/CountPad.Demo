@@ -15,7 +15,7 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
     {
         ValueTask<Distributor> AddDistributorAsync(Distributor distributor);
         ValueTask<Distributor> GetDistributorByIdAsync(Guid id);
-        ValueTask<IQueryable<Distributor>> GetAllDistributors();
+        IQueryable<Distributor> GetAllDistributors();
         ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor);
         ValueTask<Distributor> DeleteDistributorAsync(Guid id);
     }
