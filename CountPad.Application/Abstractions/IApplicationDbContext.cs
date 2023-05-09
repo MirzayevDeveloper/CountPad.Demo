@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace CountPad.Application.Abstactions
 		public ValueTask<T> GetAsync<T>(params object[] objectIds) where T : class;
 		public IQueryable<T> GetAll<T>();
 		public ValueTask<T> UpdateAsync<T>(T @object);
-		public ValueTask<T> DeleteAsync<T>(T @object);
+		public ValueTask<T> DeleteAsync<T>(Guid id);
 
 		public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 	}
