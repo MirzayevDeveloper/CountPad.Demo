@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /CountPad.Infrastructure/appsettings.json
 /CountPad.Infrastructure/AppSettings.json
+/CountPad.Api/appsettings.json
+/CountPad.Api/appsettings.Development.json

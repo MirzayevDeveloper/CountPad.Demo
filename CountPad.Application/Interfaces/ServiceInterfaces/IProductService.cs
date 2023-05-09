@@ -4,20 +4,19 @@
 // --------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IProductService
-    {
-        Task<int> AddProductAsync(Product product);
-        Task<int> AddProductRangeAsync(IEnumerable<Product> products);
-        Task<Product> GetProductByIdAsync(Guid id);
-        Task<List<Product>> GetAllProducts();
-        Task<int> UpdateProductAsync(Product product);
-        Task<int> DeleteProductAsync(Guid id);
-    }
+	public interface IProductService
+	{
+		ValueTask<Product> AddProductAsync(Product product);
+		ValueTask<Product> GetProductByIdAsync(Guid id);
+		IQueryable<Product> GetAllProducts();
+		ValueTask<Product> UpdateProductAsync(Product product);
+		ValueTask<Product> DeleteProductAsync(Guid id);
+	}
 }
 
