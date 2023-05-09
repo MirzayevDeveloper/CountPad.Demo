@@ -365,3 +365,5 @@ FodyWeavers.xsd
 /CountPad.Infrastructure/AppSettings.json
 /CountPad.Api/appsettings.json
 /CountPad.Api/appsettings.Development.json
+/CountPad.Api/CountPad.Api.csproj
+/CountPad.Api/appsettings.json
