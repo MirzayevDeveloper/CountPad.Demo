@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CountPad.Application.Abstactions;
@@ -15,24 +17,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CountPad.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
-    {
-        
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
-            : base(options)
-        {
-            
-        }
-        public DbSet<Distributor> Distributors { get; set ; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Package> Packages { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Sold> Solds { get; set; }
-        public DbSet<User> Users { get; set; }
+	public class ApplicationDbContext : DbContext, IApplicationDbContext
+	{
 
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+			: base(options)
+		{
+
+		}
+		public DbSet<Distributor> Distributors { get; set; }
+		public DbSet<Order> Orders { get; set; }
+		public DbSet<Package> Packages { get; set; }
+		public DbSet<Product> Products { get; set; }
+		public DbSet<Sold> Solds { get; set; }
+		public DbSet<User> Users { get; set; }
+
+		public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
