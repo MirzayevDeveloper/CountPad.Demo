@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CountPad.Application.Services
 {
-    internal class DistributorService
+    public class DistributorService
     {
     }
 }
