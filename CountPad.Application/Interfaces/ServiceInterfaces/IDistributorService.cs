@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
 
@@ -12,11 +13,11 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
     public interface IDistributorService
     {
-        Task<int> AddDistributorAsync(Distributor distributor);
-        Task<Distributor> GetDistributorByIdAsync(Guid id);
-        Task<List<Distributor>> GetAllDistributors();
-        Task<int> UpdateDistributorAsync(Distributor distributor);
-        Task<int> DeleteDistributorAsync(Guid id);
+        ValueTask<Distributor> AddDistributorAsync(Distributor distributor);
+        ValueTask<Distributor> GetDistributorByIdAsync(Guid id);
+        IQueryable<Distributor> GetAllDistributors();
+        ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor);
+        ValueTask<Distributor> DeleteDistributorAsync(Guid id);
     }
 }
 
