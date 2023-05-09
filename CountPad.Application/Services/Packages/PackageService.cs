@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Packages;
 
@@ -10,9 +11,16 @@ namespace CountPad.Application.Services
 {
     public class PackageService : IPackageService
     {
-        public ValueTask<Package> AddPackageAsync(Package package)
+        private readonly IApplicationDbContext _context;
+
+		public PackageService(IApplicationDbContext context)
+		{
+			_context = context;
+		}
+
+		public async ValueTask<Package> AddPackageAsync(Package package)
         {
-            throw new NotImplementedException();
+            return await _context.AddAsync(package);
         }
 
         public ValueTask<Package> DeletePackageAsync(Guid id)

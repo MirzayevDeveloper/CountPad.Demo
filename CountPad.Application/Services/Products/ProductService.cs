@@ -26,7 +26,14 @@ namespace CountPad.Application.Services
 
 		public async ValueTask<Product> DeleteProductAsync(Guid id)
 		{
-			return await _context.DeleteAsync<Product>(id);
+			Product maybeProduct = await _context.GetAsync<Product>(id);
+
+			if(maybeProduct == null)
+			{
+				throw new ArgumentNullException(nameof(maybeProduct));
+			}
+
+			return await _context.DeleteAsync(maybeProduct);
 		}
 
 		public IQueryable<Product> GetAllProducts()
