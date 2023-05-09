@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Distributors;
+using CountPad.Domain.Models.Products;
+using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CountPad.Application.Services
 {
@@ -20,38 +23,34 @@ namespace CountPad.Application.Services
         }
         public async ValueTask<Distributor> AddDistributorAsync(Distributor distributor)
         {
-            await _context.Distributors.AddAsync(distributor);
-            await _context.SaveChangesAsync();
-            return distributor;
+            return await _context.AddAsync(distributor);
         }
 
         public async ValueTask<Distributor> DeleteDistributorAsync(Guid id)
         {
-            var entity = await _context.Distributors.FindAsync(id);
+            Distributor maybeDistributor = await _context.GetAsync<Distributor>(id);
 
-            _context.Distributors.Remove(entity);
-            await _context.SaveChangesAsync();
+            if (maybeDistributor == null)
+            {
+                throw new ArgumentNullException(nameof(maybeDistributor));
+            }
 
-            return entity;
+            return await _context.DeleteAsync(maybeDistributor);
         }
 
         public IQueryable<Distributor> GetAllDistributors()
         {
-            var  entities=_context.GetAll<Distributor>();
-            return entities;
+            return _context.GetAll<Distributor>();
         }
 
         public async ValueTask<Distributor> GetDistributorByIdAsync(Guid id)
         {
-            var entity = await _context.Distributors.FindAsync(id);
-
-            return entity;
+            return await _context.GetAsync<Distributor>(id);
         }
 
         public async ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor)
         {
-          throw new NotImplementedException();
-                                 
+            return await _context.UpdateAsync<Distributor>(distributor);                                 
         
         }
     }

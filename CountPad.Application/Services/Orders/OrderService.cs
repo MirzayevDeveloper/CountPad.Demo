@@ -6,36 +6,50 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
+using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Orders;
 
 namespace CountPad.Application.Services
 {
 	public class OrderService : IOrderService
 	{
-		public ValueTask<Order> AddOrderAsync(Order order)
+        private readonly IApplicationDbContext _context;
+        public OrderService(IApplicationDbContext context)
+        {
+            _context= context;
+        }
+        public async ValueTask<Order> AddOrderAsync(Order order)
 		{
-			throw new NotImplementedException();
+			return await _context.AddAsync(order);
 		}
 
-		public ValueTask<Order> DeleteOrderAsync(Guid id)
+		public async ValueTask<Order> DeleteOrderAsync(Guid id)
 		{
-			throw new NotImplementedException();
-		}
+            Order maybeOrder = await _context.GetAsync<Order>(id);
+
+            if (maybeOrder == null)
+            {
+                throw new ArgumentNullException(nameof(maybeOrder));
+            }
+
+            return await _context.DeleteAsync(maybeOrder);
+        }
 
 		public IQueryable<Order> GetAllOrdersAsync()
 		{
-			throw new NotImplementedException();
+			return _context.GetAll<Order>();
 		}
 
-		public ValueTask<Order> GetOrderByIdAsync(Guid id)
+		public async ValueTask<Order> GetOrderByIdAsync(Guid id)
 		{
-			throw new NotImplementedException();
-		}
+            return await _context.GetAsync<Order>(id);
+        }
 
-		public ValueTask<Order> UpdateOrderAsync(Order order)
+		public async ValueTask<Order> UpdateOrderAsync(Order order)
 		{
-			throw new NotImplementedException();
-		}
+            return await _context.UpdateAsync<Order>(order);
+        }
 	}
 }
