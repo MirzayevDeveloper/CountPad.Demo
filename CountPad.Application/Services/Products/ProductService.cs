@@ -19,14 +19,14 @@ namespace CountPad.Application.Services
 		public ProductService(IApplicationDbContext context) =>
 			_context = context;
 
-		public ValueTask<Product> AddProductAsync(Product product)
+		public async ValueTask<Product> AddProductAsync(Product product)
 		{
-			throw new NotImplementedException();
+			return await _context.AddAsync(product);
 		}
 
-		public ValueTask<Product> DeleteProductAsync(Guid id)
+		public async ValueTask<Product> DeleteProductAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			return await _context.DeleteAsync<Product>(id);
 		}
 
 		public IQueryable<Product> GetAllProducts()
