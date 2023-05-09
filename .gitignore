@@ -367,4 +367,9 @@ FodyWeavers.xsd
 <<<<<<< HEAD
 =======
 /CountPad.Api/appsettings.Development.json
+<<<<<<< HEAD
+/CountPad.Api/CountPad.Api.csproj
+/CountPad.Api/appsettings.json
+=======
 >>>>>>> 09f993c4b306c48d0e855f101eab5fa05fc93333
+>>>>>>> 2e50642e4a73697730f50e57c848c6a8af69abb3

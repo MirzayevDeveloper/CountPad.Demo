@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Users;
 
@@ -13,29 +14,35 @@ namespace CountPad.Application.Services
 {
 	public class UserService : IUserService
 	{
-		public ValueTask<User> AddUserAsync(User user)
-		{
-			throw new NotImplementedException();
-		}
+		private readonly IApplicationDbContext _applicationDbContext;
 
-		public ValueTask<User> DeleteUserAsync(Guid id)
-		{
-			throw new NotImplementedException();
-		}
+        public UserService(IApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+        }
+
+        public async ValueTask<User> AddUserAsync(User user)
+			=> await _applicationDbContext.AddAsync(user);
+
+		public async ValueTask<User> GetUserByIdAsync(Guid id)
+			=> await _applicationDbContext.GetAsync<User>(id);
 
 		public IQueryable<User> GetAllUsersAsync()
-		{
-			throw new NotImplementedException();
-		}
+			=>	_applicationDbContext.GetAll<User>();
 
-		public ValueTask<User> GetUserByIdAsync(Guid id)
-		{
-			throw new NotImplementedException();
-		}
+		public async ValueTask<User> UpdateUserAsync(User user)
+			=> await _applicationDbContext.UpdateAsync(user);
 
-		public ValueTask<User> UpdateUserAsync(User user)
+		public async ValueTask<User> DeleteUserAsync(Guid id)
 		{
-			throw new NotImplementedException();
+		User maybeUser=await _applicationDbContext.GetAsync<User>(id);
+
+			if (maybeUser == null)
+			{
+				throw new ArgumentNullException(nameof(maybeUser)); 
+			}
+
+			return await _applicationDbContext.DeleteAsync(maybeUser);
 		}
 	}
 }
