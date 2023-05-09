@@ -22,5 +22,37 @@ namespace CountPad.Api.Controllers
 
 			return Ok(response);
 		}
+
+		[HttpGet("{id}")]
+		public async ValueTask<IActionResult> GetProductAsync(Guid id)
+		{
+			Product maybeProduct = await _productService.GetProductByIdAsync(id);
+
+			return Ok(maybeProduct);
+		}
+
+		[HttpGet]
+		public async ValueTask<IActionResult> GetAllProdoductsAsync()
+		{
+			IQueryable<Product> products = _productService.GetAllProducts();
+
+			return Ok(products);
+		}
+
+		[HttpPut]
+		public async ValueTask<IActionResult> UpdateProductAsync(Product product)
+		{
+			Product maybeProduct = await _productService.UpdateProductAsync(product);
+
+			return Ok(maybeProduct);
+		}
+
+		[HttpDelete]
+		public async ValueTask<IActionResult> DeleteProductAsync(Guid productId)
+		{
+			Product maybeProduct = await _productService.DeleteProductAsync(productId);
+
+			return Ok(maybeProduct);
+		}
 	}
 }

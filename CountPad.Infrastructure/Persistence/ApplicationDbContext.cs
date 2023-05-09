@@ -18,11 +18,11 @@ namespace CountPad.Infrastructure.Persistence
 {
 	public class ApplicationDbContext : DbContext, IApplicationDbContext
 	{
-		private readonly ApplicationDbContext _context;
+		private DbContextOptions<ApplicationDbContext> _options;
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
 		{
-			_context = new ApplicationDbContext(options);
+			_options = options;
 		}
 
 		public DbSet<Distributor> Distributors { get; set; }
@@ -34,34 +34,39 @@ namespace CountPad.Infrastructure.Persistence
 
 		public async ValueTask<T> AddAsync<T>(T @object)
 		{
-			_context.Entry(@object).State = EntityState.Added;
-			await _context.SaveChangesAsync();
+			var context = new ApplicationDbContext(_options);
+			Entry(@object).State = EntityState.Added;
+			await SaveChangesAsync();
 
 			return @object;
 		}
 
 		public async ValueTask<T> GetAsync<T>(params object[] objectIds) where T : class
 		{
-			return await _context.FindAsync<T>(objectIds);
+			var context = new ApplicationDbContext(_options);
+			return await context.FindAsync<T>(objectIds);
 		}
 
 		public IQueryable<T> GetAll<T>() where T : class
 		{
-			return _context.Set<T>();
+			var context = new ApplicationDbContext(_options);
+			return context.Set<T>();
 		}
 
 		public async ValueTask<T> UpdateAsync<T>(T @object)
 		{
-			_context.Entry(@object).State = EntityState.Modified;
-			await _context.SaveChangesAsync();
+			var context = new ApplicationDbContext(_options);
+			context.Entry(@object).State = EntityState.Modified;
+			await context.SaveChangesAsync();
 
 			return @object;
 		}
 
 		public async ValueTask<T> DeleteAsync<T>(T @object)
 		{
-			_context.Entry(@object).State = EntityState.Deleted;
-			await _context.SaveChangesAsync();
+			var context = new ApplicationDbContext(_options);
+			context.Entry(@object).State = EntityState.Deleted;
+			await context.SaveChangesAsync();
 
 			return @object;
 		}
