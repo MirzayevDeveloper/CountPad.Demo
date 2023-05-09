@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CountPad.Domain\CountPad.Domain.csproj" />
     <ProjectReference Include="..\CountPad.Application\CountPad.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
