@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Products;
 
@@ -10,7 +11,12 @@ namespace CountPad.Application.Services
 {
     public class ProductService : IProductService
     {
-        public ValueTask<Product> AddProductAsync(Product product)
+        private readonly IApplicationDbContext _context;
+
+		public ProductService(IApplicationDbContext context) =>
+			_context = context;
+
+		public ValueTask<Product> AddProductAsync(Product product)
         {
             throw new NotImplementedException();
         }

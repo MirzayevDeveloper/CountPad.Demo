@@ -13,7 +13,6 @@ using CountPad.Domain.Models.Products;
 using CountPad.Domain.Models.Solds;
 using CountPad.Domain.Models.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace CountPad.Infrastructure.Persistence
 {
@@ -26,7 +25,7 @@ namespace CountPad.Infrastructure.Persistence
 			_context = new ApplicationDbContext(options);
 		}
 
-        public DbSet<Distributor> Distributors { get; set; }
+		public DbSet<Distributor> Distributors { get; set; }
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<Package> Packages { get; set; }
 		public DbSet<Product> Products { get; set; }
