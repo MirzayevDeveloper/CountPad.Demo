@@ -41,14 +41,19 @@ namespace CountPad.Application.Services
             return entities;
         }
 
-        public ValueTask<Distributor> GetDistributorByIdAsync(Guid id)
+        public async ValueTask<Distributor> GetDistributorByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Distributors.FindAsync(id);
+
+            return entity;
         }
 
-        public ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor)
+        public async ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Distributors.FindAsync(distributor.Id);
+                       
+
+        
         }
     }
 }
