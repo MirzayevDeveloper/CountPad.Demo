@@ -12,7 +12,7 @@ using CountPad.Domain.Models.Orders;
 
 namespace CountPad.Application.Services
 {
-	public class OrderService : IOrderService
+	public partial class OrderService : IOrderService
 	{
         private readonly IApplicationDbContext _context;
         public OrderService(IApplicationDbContext context)=>

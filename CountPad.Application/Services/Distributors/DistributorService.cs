@@ -12,7 +12,7 @@ using CountPad.Domain.Models.Distributors;
 
 namespace CountPad.Application.Services
 {
-    public class DistributorService : IDistributorService
+    public partial class DistributorService : IDistributorService
     {
         private readonly IApplicationDbContext _context;
 
