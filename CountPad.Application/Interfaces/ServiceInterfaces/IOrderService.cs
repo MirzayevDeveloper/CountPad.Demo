@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Orders;
 
@@ -12,11 +13,10 @@ namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
     public interface IOrderService
     {
-        Task<int> AddOrderAsync(Order order);
-        Task<int> AddRangeOrderAsync(IEnumerable<Order> orders);
-        Task<Order> GetOrderByIdAsync(Guid id);
-        Task<List<Order>> GetAllOrdersAsync();
-        Task<int> UpdateOrderAsync(Order order);
-        Task<int> DeleteOrderAsync(Guid id);
+        ValueTask<Order> AddOrderAsync(Order order);
+        ValueTask<Order> GetOrderByIdAsync(Guid id);
+        ValueTask<IQueryable<Order>> GetAllOrdersAsync();
+        ValueTask<Order> UpdateOrderAsync(Order order);
+        ValueTask<Order> DeleteOrderAsync(Guid id);
     }
 }
