@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CountPad.Application\CountPad.Application.csproj" />
     <ProjectReference Include="..\CountPad.Infrastructure\CountPad.Infrastructure.csproj" />
   </ItemGroup>
