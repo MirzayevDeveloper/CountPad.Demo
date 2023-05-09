@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CountPad.Application.DTOs
 {
-    internal class DistributorDTO
+    public class DistributorDTO
     {
+        public string Name { get; set; }
+        public string CompanyPhone { get; set; }
+        public string DelivererPhone { get; set; }
     }
 }

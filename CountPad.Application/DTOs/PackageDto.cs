@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CountPad.Application.DTOs
 {
-    internal class PackageDto
+    public class PackageDto
     {
     }
 }
