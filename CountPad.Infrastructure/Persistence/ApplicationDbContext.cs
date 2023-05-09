@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
 
 namespace CountPad.Infrastructure.Persistence
 {
-    internal class ApplicationDbContext
-    {
-    }
+	public class ApplicationDbContext
+	{
+	}
 }
