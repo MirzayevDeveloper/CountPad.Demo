@@ -3,6 +3,8 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using CountPad.Application;
+
 namespace CountPad.Api
 {
 	public class Program
@@ -11,6 +13,7 @@ namespace CountPad.Api
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
+			builder.Services.AddApplication();
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
