@@ -3,6 +3,7 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Distributors;
@@ -23,6 +24,12 @@ namespace CountPad.Application.Abstactions
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Sold> Solds { get; set; }
 		public DbSet<User> Users { get; set; }
+
+		public ValueTask<T> AddAsync<T>(T @object);
+		public ValueTask<T> GetAsync<T>(params object[] objectIds) where T : class;
+		public IQueryable<T> GetAll<T>();
+		public ValueTask<T> UpdateAsync<T>(T @object);
+		public ValueTask<T> DeleteAsync<T>(T @object);
 
 		public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 	}
