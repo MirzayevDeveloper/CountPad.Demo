@@ -7,5 +7,6 @@ namespace CountPad.Infrastructure.Persistence
 {
 	public class ApplicationDbContext
 	{
+
 	}
 }
