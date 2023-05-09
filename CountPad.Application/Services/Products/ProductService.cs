@@ -30,7 +30,7 @@ namespace CountPad.Application.Services
 
 			if(maybeProduct == null)
 			{
-				throw new ArgumentNullException(nameof(maybeProduct));
+				throw new ArgumentNullException();
 			}
 
 			return await _context.DeleteAsync(maybeProduct);
