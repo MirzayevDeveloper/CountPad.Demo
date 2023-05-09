@@ -8,11 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
+using CountPad.Application.Services.Products.Products.Exceptions;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.Services
 {
-	public class ProductService : IProductService
+	public partial class ProductService : IProductService
 	{
 		private readonly IApplicationDbContext _context;
 
@@ -21,6 +22,8 @@ namespace CountPad.Application.Services
 
 		public async ValueTask<Product> AddProductAsync(Product product)
 		{
+			ValidateProductIsNotNull(product);
+
 			return await _context.AddAsync<Product>(product);
 		}
 
