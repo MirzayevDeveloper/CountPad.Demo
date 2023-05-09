@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using CountPad.Application.Abstactions;
@@ -17,19 +18,27 @@ namespace CountPad.Application.Services
         {
             _context = context;
         }
-        public ValueTask<Distributor> AddDistributorAsync(Distributor distributor)
+        public async ValueTask<Distributor> AddDistributorAsync(Distributor distributor)
         {
-            throw new NotImplementedException();
+            await _context.Distributors.AddAsync(distributor);
+            await _context.SaveChangesAsync();
+            return distributor;
         }
 
-        public ValueTask<Distributor> DeleteDistributorAsync(Guid id)
+        public async ValueTask<Distributor> DeleteDistributorAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Distributors.FindAsync(id);
+
+            _context.Distributors.Remove(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
         }
 
         public IQueryable<Distributor> GetAllDistributors()
         {
-            throw new NotImplementedException();
+            var  entities=_context.GetAll<Distributor>();
+            return entities;
         }
 
         public ValueTask<Distributor> GetDistributorByIdAsync(Guid id)
