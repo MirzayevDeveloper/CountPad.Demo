@@ -29,7 +29,7 @@ namespace CountPad.Application.Services
              await _context.GetAsync<Distributor>(id);
 
         public async ValueTask<Distributor> UpdateDistributorAsync(Distributor distributor)=>
-            await _context.UpdateAsync<Distributor>(distributor);   
+            await _context.UpdateAsync<Distributor>(distributor);
         
         public async ValueTask<Distributor> DeleteDistributorAsync(Guid id)
         {
