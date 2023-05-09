@@ -21,34 +21,34 @@ namespace CountPad.Application.Services
 
 		public async ValueTask<Product> AddProductAsync(Product product)
 		{
-			return await _context.AddAsync(product);
+			return await _context.AddAsync<Product>(product);
+		}
+
+		public IQueryable<Product> GetAllProducts()
+		{
+			return _context.GetAll<Product>();
+		}
+
+		public async ValueTask<Product> GetProductByIdAsync(Guid id)
+		{
+			return await _context.GetAsync<Product>(id);
+		}
+
+		public async ValueTask<Product> UpdateProductAsync(Product product)
+		{
+			return await _context.UpdateAsync<Product>(product);
 		}
 
 		public async ValueTask<Product> DeleteProductAsync(Guid id)
 		{
 			Product maybeProduct = await _context.GetAsync<Product>(id);
 
-			if(maybeProduct == null)
+			if (maybeProduct == null)
 			{
 				throw new ArgumentNullException();
 			}
 
 			return await _context.DeleteAsync(maybeProduct);
-		}
-
-		public IQueryable<Product> GetAllProducts()
-		{
-			throw new NotImplementedException();
-		}
-
-		public ValueTask<Product> GetProductByIdAsync(Guid id)
-		{
-			throw new NotImplementedException();
-		}
-
-		public ValueTask<Product> UpdateProductAsync(Product product)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
