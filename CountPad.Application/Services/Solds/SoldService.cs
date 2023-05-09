@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Solds;
 
@@ -13,29 +14,44 @@ namespace CountPad.Application.Services
 {
 	public class SoldService : ISoldService
 	{
-		public ValueTask<Sold> AddSoldAsync(Sold sold)
-		{
-			throw new NotImplementedException();
-		}
+		private readonly IApplicationDbContext _applicationDbContext;
 
-		public ValueTask<Sold> DeleteSoldAsync(Guid id)
+        public SoldService(IApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+        }
+
+        public async ValueTask<Sold> AddSoldAsync(Sold sold)
 		{
-			throw new NotImplementedException();
+			return await _applicationDbContext.AddAsync(sold);
 		}
 
 		public IQueryable<Sold> GetAllSoldsAsync()
 		{
-			throw new NotImplementedException();
+            return  _applicationDbContext.GetAll<Sold>();
 		}
 
-		public ValueTask<Sold> GetSoldByIdAsync(Guid id)
+		public async ValueTask<Sold> GetSoldByIdAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			return await _applicationDbContext.GetAsync<Sold>(id);
 		}
 
-		public ValueTask<Sold> UpdateSoldAsync(Sold sold)
+		public async ValueTask<Sold> UpdateSoldAsync(Sold sold)
 		{
-			throw new NotImplementedException();
+		return await _applicationDbContext.UpdateAsync(sold);
 		}
+
+		public async ValueTask<Sold> DeleteSoldAsync(Guid id)
+		{
+			Sold maybeSold= await _applicationDbContext.GetAsync<Sold>(id);
+			
+			if (maybeSold == null) 
+			{
+				throw new ArgumentNullException(nameof(maybeSold));
+			}
+
+			return await _applicationDbContext.DeleteAsync(maybeSold);
+		}
+
 	}
 }
