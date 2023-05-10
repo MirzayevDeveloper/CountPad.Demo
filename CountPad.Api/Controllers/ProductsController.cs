@@ -1,4 +1,5 @@
-﻿using CountPad.Application.Interfaces.ServiceInterfaces;
+﻿using CountPad.Application.DTOs;
+using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Products;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,15 @@ namespace CountPad.Api.Controllers
 		}
 
 		[HttpPost]
-		public async ValueTask<IActionResult> PostProductAsync(Product product)
+		public async ValueTask<IActionResult> PostProductAsync(ProductDto productDto)
 		{
-			Product response = await _productService.AddProductAsync(product);
+			Product response = await _productService.AddProductAsync(new()
+			{
+				Id = Guid.NewGuid(),
+				Name = productDto.Name,
+				Description = productDto.Description,
+				ProductType = productDto.ProductType,
+			});
 
 			return Ok(response);
 		}
