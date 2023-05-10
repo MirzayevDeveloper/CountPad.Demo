@@ -17,7 +17,7 @@ namespace CountPad.Infrastructure
 		{
 			services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
 			{
-				options.UseNpgsql(configuration.GetConnectionString("Connection"));
+				options.UseNpgsql(configuration.GetConnectionString("CountPadConnection"));
 			});
 
 			return services;
