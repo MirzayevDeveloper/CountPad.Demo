@@ -36,6 +36,14 @@ namespace CountPad.Api.Controllers
 			return Ok(response);
 		}
 
+		[HttpGet]
+		public IQueryable<ActionResult> GetAllUsersAsync()
+		{
+			var response = _userService.GetAllUsersAsync();
+
+			return (IQueryable<ActionResult>)Ok(response);
+		}
+
 		[HttpPut]
 		public async ValueTask<ActionResult> UpdateUserAsync(User user)
 		{
@@ -52,12 +60,5 @@ namespace CountPad.Api.Controllers
 			return Ok(response);
 		}
 
-		[HttpGet]
-		public IQueryable<ActionResult> GetAllUsersAsync()
-		{
-			var response = _userService.GetAllUsersAsync();
-
-			return (IQueryable<ActionResult>)Ok(response);
-		}
 	}
 }

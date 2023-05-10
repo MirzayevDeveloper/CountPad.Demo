@@ -36,6 +36,14 @@ namespace CountPad.Api.Controllers
 			return Ok(response);
 		}
 
+		[HttpGet]
+		public IQueryable<ActionResult> GetAllSoldsAsync()
+		{
+			var response = _soldService.GetAllSoldsAsync();
+
+			return (IQueryable<ActionResult>)Ok(response);
+		}
+
 		[HttpPut]
 		public async ValueTask<ActionResult> UpdateSoldAsync(Sold sold)
 		{
@@ -52,12 +60,5 @@ namespace CountPad.Api.Controllers
 			return Ok(response);
 		}
 
-		[HttpGet]
-		public IQueryable<ActionResult> GetAllSoldsAsync()
-		{
-			var response = _soldService.GetAllSoldsAsync();
-
-			return (IQueryable<ActionResult>)Ok(response);
-		}
 	}
 }
