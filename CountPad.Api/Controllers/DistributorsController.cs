@@ -40,6 +40,19 @@ namespace CountPad.Api.Controllers
         }
 
         [HttpPut]
-        public async ValueTask<ActionResult>
+        public async ValueTask<ActionResult> UpdateDistributorAsync(Distributor distributor)
+        {
+            var response = await _distributorService.UpdateDistributorAsync(distributor);
+
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        public async ValueTask<ActionResult> DeleteDistributorAsync(Guid id)
+        {
+            var response = await _distributorService.DeleteDistributorAsync(id);
+
+            return Ok(response);
+        }
     }
 }
