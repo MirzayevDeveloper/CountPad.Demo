@@ -16,19 +16,19 @@ namespace CountPad.Application.Services
 	{
 		private readonly IApplicationDbContext _applicationDbContext;
 
-        public SoldService(IApplicationDbContext applicationDbContext)
-        {
-            _applicationDbContext = applicationDbContext;
-        }
+		public SoldService(IApplicationDbContext applicationDbContext)
+		{
+			_applicationDbContext = applicationDbContext;
+		}
 
-        public async ValueTask<Sold> AddSoldAsync(Sold sold)
+		public async ValueTask<Sold> AddSoldAsync(Sold sold)
 		{
 			return await _applicationDbContext.AddAsync(sold);
 		}
 
 		public IQueryable<Sold> GetAllSoldsAsync()
 		{
-            return  _applicationDbContext.GetAll<Sold>();
+			return _applicationDbContext.GetAll<Sold>();
 		}
 
 		public async ValueTask<Sold> GetSoldByIdAsync(Guid id)
@@ -38,14 +38,14 @@ namespace CountPad.Application.Services
 
 		public async ValueTask<Sold> UpdateSoldAsync(Sold sold)
 		{
-		return await _applicationDbContext.UpdateAsync(sold);
+			return await _applicationDbContext.UpdateAsync(sold);
 		}
 
 		public async ValueTask<Sold> DeleteSoldAsync(Guid id)
 		{
-			Sold maybeSold= await _applicationDbContext.GetAsync<Sold>(id);
-			
-			if (maybeSold == null) 
+			Sold maybeSold = await _applicationDbContext.GetAsync<Sold>(id);
+
+			if (maybeSold == null)
 			{
 				throw new ArgumentNullException(nameof(maybeSold));
 			}

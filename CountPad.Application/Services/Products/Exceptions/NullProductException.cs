@@ -9,7 +9,7 @@ namespace CountPad.Application.Services.Products.Products.Exceptions
 {
 	public class NullProductException : Exception
 	{
-        public NullProductException() : base("Product is null.")
-        { }
-    }
+		public NullProductException() : base("Product is null.")
+		{ }
+	}
 }

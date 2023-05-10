@@ -4,7 +4,6 @@
 // --------------------------------------------------------
 
 using System;
-using CountPad.Domain.Models.Distributors;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.DTOs
