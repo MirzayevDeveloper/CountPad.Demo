@@ -4,19 +4,18 @@
 // --------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Domain.Models.Packages;
 
 namespace CountPad.Application.Interfaces.ServiceInterfaces
 {
-    public interface IPackageService
-    {
-        Task<int> AddPackageAsync(Package package);
-        Task<int> AddRangePackageAsync(IEnumerable<Package> packages);
-        Task<Package> GetPackageByIdAsync(Guid id);
-        Task<List<Package>> GetAllPackageAsync();
-        Task<int> UpdatePackageAsync(Package package);
-        Task<int> DeletePackageAsync(Guid id);
-    }
+	public interface IPackageService
+	{
+		ValueTask<Package> AddPackageAsync(Package package);
+		ValueTask<Package> GetPackageByIdAsync(Guid id);
+		IQueryable<Package> GetAllPackageAsync();
+		ValueTask<Package> UpdatePackageAsync(Package package);
+		ValueTask<Package> DeletePackageAsync(Guid id);
+	}
 }

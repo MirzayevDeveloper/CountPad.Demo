@@ -3,21 +3,14 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-namespace CountPad.Domain.Models.Products
+using System;
+
+namespace CountPad.Application.Services.Products.Exceptions
 {
-	public enum ProductTypes
+	public class InvalidProductException : Exception
 	{
-		Fruits,
-		Vegetables,
-		Meat,
-		Dairy,
-		Bread,
-		Beverages,
-		Electronics,
-		Clothing,
-		Books,
-		Furniture,
-		Cosmetics
+		public InvalidProductException()
+			: base("Product is invalid, try again later!")
+		{ }
 	}
 }
-

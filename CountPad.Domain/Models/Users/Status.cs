@@ -5,10 +5,10 @@
 
 namespace CountPad.Domain.Models.Users
 {
-    public enum Status
-    {
-        Saller = 1,
-        Manager,
-        Storekeeper
-    }
+	public enum Status
+	{
+		Saller = 1,
+		Manager,
+		Storekeeper
+	}
 }

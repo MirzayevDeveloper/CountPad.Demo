@@ -3,11 +3,13 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
-using CountPad.Domain.Models.Packages;
+using System;
 
-namespace CountPad.Application.Interfaces.RepositoryInterfaces
+namespace CountPad.Application.Services.Products.Products.Exceptions
 {
-    public interface IPackageRepository : IRepository<Package>
-    {
-    }
+	public class NullProductException : Exception
+	{
+		public NullProductException() : base("Product is null.")
+		{ }
+	}
 }
