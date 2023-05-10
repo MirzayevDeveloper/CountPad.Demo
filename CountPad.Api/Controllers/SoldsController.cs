@@ -48,7 +48,7 @@ namespace CountPad.Api.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async ValueTask<ActionResult> DeleteSoldAsync(Guid id)
         {
             var response = await _soldService.DeleteSoldAsync(id);
