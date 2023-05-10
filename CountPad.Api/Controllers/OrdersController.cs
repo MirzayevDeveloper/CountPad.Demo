@@ -22,10 +22,10 @@ namespace CountPad.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id")]
-        public async ValueTask<ActionResult> GetOrderByIdAsync(Guid guid)
+        [HttpGet("{id}")]
+        public async ValueTask<ActionResult> GetOrderByIdAsync(Guid id)
         {
-            var response= await _orderService.DeleteOrderAsync(guid);
+            var response= await _orderService.DeleteOrderAsync(id);
             return Ok(response);
         }
 

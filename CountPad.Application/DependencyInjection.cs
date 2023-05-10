@@ -13,7 +13,10 @@ namespace CountPad.Application
 	{
 		public static IServiceCollection AddApplication(this IServiceCollection services)
 		{
+			services.AddScoped<IDistributorService, DistributorService>();
+			services.AddScoped<IOrderService, OrderService>();
 			services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<IPackageService, PackageService>();
 
 			return services;
 		}
