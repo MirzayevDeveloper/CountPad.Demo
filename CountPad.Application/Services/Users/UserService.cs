@@ -16,30 +16,30 @@ namespace CountPad.Application.Services
 	{
 		private readonly IApplicationDbContext _applicationDbContext;
 
-        public UserService(IApplicationDbContext applicationDbContext)
-        {
-            _applicationDbContext = applicationDbContext;
-        }
+		public UserService(IApplicationDbContext applicationDbContext)
+		{
+			_applicationDbContext = applicationDbContext;
+		}
 
-        public async ValueTask<User> AddUserAsync(User user)
+		public async ValueTask<User> AddUserAsync(User user)
 			=> await _applicationDbContext.AddAsync(user);
 
 		public async ValueTask<User> GetUserByIdAsync(Guid id)
 			=> await _applicationDbContext.GetAsync<User>(id);
 
 		public IQueryable<User> GetAllUsersAsync()
-			=>	_applicationDbContext.GetAll<User>();
+			=> _applicationDbContext.GetAll<User>();
 
 		public async ValueTask<User> UpdateUserAsync(User user)
 			=> await _applicationDbContext.UpdateAsync(user);
 
 		public async ValueTask<User> DeleteUserAsync(Guid id)
 		{
-		User maybeUser=await _applicationDbContext.GetAsync<User>(id);
+			User maybeUser = await _applicationDbContext.GetAsync<User>(id);
 
 			if (maybeUser == null)
 			{
-				throw new ArgumentNullException(nameof(maybeUser)); 
+				throw new ArgumentNullException(nameof(maybeUser));
 			}
 
 			return await _applicationDbContext.DeleteAsync(maybeUser);

@@ -5,19 +5,19 @@
 
 namespace CountPad.Domain.Models.Products
 {
-    public enum ProductTypes
-    {
-        Fruits,
-        Vegetables,
-        Meat,
-        Dairy,
-        Bread,
-        Beverages,
-        Electronics,
-        Clothing,
-        Books,
-        Furniture,
-        Cosmetics
-    }
+	public enum ProductTypes
+	{
+		Fruits,
+		Vegetables,
+		Meat,
+		Dairy,
+		Bread,
+		Beverages,
+		Electronics,
+		Clothing,
+		Books,
+		Furniture,
+		Cosmetics
+	}
 }
 

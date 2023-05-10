@@ -1,4 +1,9 @@
-﻿using CountPad.Application.DTOs;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using CountPad.Application.DTOs;
 using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Products;
 using Microsoft.AspNetCore.Mvc;

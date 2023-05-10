@@ -1,59 +1,64 @@
-﻿using CountPad.Application.Interfaces.ServiceInterfaces;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CountPad Team
+// --------------------------------------------------------
+
+using CountPad.Application.Interfaces.ServiceInterfaces;
 using CountPad.Domain.Models.Users;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountPad.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
-    {
-        private readonly IUserService _userService;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class UsersController : ControllerBase
+	{
+		private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
-        {
-            _userService = userService;
-        }
+		public UsersController(IUserService userService)
+		{
+			_userService = userService;
+		}
 
-        [HttpPost]
-        public async ValueTask<ActionResult> PostUserAsync(User user)
-        {
-            var response = await _userService.AddUserAsync(user);
+		[HttpPost]
+		public async ValueTask<ActionResult> PostUserAsync(User user)
+		{
+			var response = await _userService.AddUserAsync(user);
 
-            return Ok(response);
-        }
+			return Ok(response);
+		}
 
-        [HttpGet]
-        public IQueryable<ActionResult> GetAllUsersAsync()
-        {
-            var response = _userService.GetAllUsersAsync();
+		[HttpGet("{id}")]
+		public async ValueTask<ActionResult> GetUserByIdAsync(Guid id)
+		{
+			var response = _userService.GetUserByIdAsync(id);
 
-            return (IQueryable<ActionResult>)Ok(response);
-        }
+			return Ok(response);
+		}
 
-        [HttpGet("{id}")]
-        public async ValueTask<ActionResult> GetUserByIdAsync(Guid id)
-        {
-            var response = _userService.GetUserByIdAsync(id);
+		[HttpGet]
+		public IQueryable<ActionResult> GetAllUsersAsync()
+		{
+			var response = _userService.GetAllUsersAsync();
 
-            return Ok(response);
-        }
+			return (IQueryable<ActionResult>)Ok(response);
+		}
 
-        [HttpPut]
-        public async ValueTask<ActionResult> UpdateUserAsync(User user)
-        {
-            var response = _userService.UpdateUserAsync(user);
+		[HttpPut]
+		public async ValueTask<ActionResult> UpdateUserAsync(User user)
+		{
+			var response = _userService.UpdateUserAsync(user);
 
-            return Ok(response);
-        }
+			return Ok(response);
+		}
 
         [HttpDelete]
         public async ValueTask<ActionResult> DeleteUserAsync(Guid id)
         {
             var response = await _userService.DeleteUserAsync(id);
 
-            return Ok(response);
-        }
-    }
+			return Ok(response);
+		}
+
+	}
 }

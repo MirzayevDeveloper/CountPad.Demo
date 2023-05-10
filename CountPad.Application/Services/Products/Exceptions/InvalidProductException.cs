@@ -9,8 +9,8 @@ namespace CountPad.Application.Services.Products.Exceptions
 {
 	public class InvalidProductException : Exception
 	{
-        public InvalidProductException()
-            : base("Product is invalid, try again later!")
-        { }
-    }
+		public InvalidProductException()
+			: base("Product is invalid, try again later!")
+		{ }
+	}
 }
