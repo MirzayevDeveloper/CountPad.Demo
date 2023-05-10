@@ -28,6 +28,14 @@ namespace CountPad.Api.Controllers
 			return Ok(maybePackage);
 		}
 
+		[HttpGet]
+		public async ValueTask<IActionResult> GetAllPackages()
+		{
+			IQueryable<Package> packages = _packageService.GetAllPackageAsync();
+
+			return Ok(packages);
+		}
+
 		[HttpGet("{id}")]
 		public async ValueTask<IActionResult> GetPackageAsync(Guid id)
 		{
@@ -50,14 +58,6 @@ namespace CountPad.Api.Controllers
 			Package package = await _packageService.DeletePackageAsync(id);
 
 			return Ok(package);
-		}
-
-		[HttpGet]
-		public async ValueTask<IActionResult> GetAllPackages()
-		{
-			IQueryable<Package> packages = _packageService.GetAllPackageAsync();
-
-			return Ok(packages);
 		}
 	}
 }
