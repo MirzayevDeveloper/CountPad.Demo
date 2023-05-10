@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CountPad.Application.Abstactions;
 using CountPad.Application.Interfaces.ServiceInterfaces;
-using CountPad.Application.Services.Products.Products.Exceptions;
 using CountPad.Domain.Models.Products;
 
 namespace CountPad.Application.Services
