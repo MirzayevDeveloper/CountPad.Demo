@@ -48,10 +48,6 @@ namespace CountPad.Application.Services
 
 			foreach (bool condition in conditions)
 			{
-				if (condition)
-				{
-
-				}
 			}
 		}
 

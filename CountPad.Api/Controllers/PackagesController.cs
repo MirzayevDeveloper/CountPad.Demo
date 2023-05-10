@@ -20,6 +20,14 @@ namespace CountPad.Api.Controllers
 			_packageService = packageService;
 		}
 
+		[HttpPost]
+		public async ValueTask<IActionResult> AddPackageAsync(Package package)
+		{
+			Package maybePackage = await _packageService.AddPackageAsync(package);
+
+			return Ok(maybePackage);
+		}
+
 		[HttpGet("{id}")]
 		public async ValueTask<IActionResult> GetPackageAsync(Guid id)
 		{
@@ -28,21 +36,7 @@ namespace CountPad.Api.Controllers
 			return Ok(maybePackage);
 		}
 
-		[HttpGet]
-		public IActionResult GetAllPackages()
-		{
-			IQueryable<Package> packages = _packageService.GetAllPackageAsync();
-
-			return Ok(packages);
-		}
-
-		public async ValueTask<IActionResult> AddPackageAsync(Package package)
-		{
-			Package maybePackage = await _packageService.AddPackageAsync(package);
-
-			return Ok(maybePackage);
-		}
-
+		[HttpPut]
 		public async ValueTask<IActionResult> UpdatePackageAsync(Package package)
 		{
 			Package maybePackage = await _packageService.UpdatePackageAsync(package);
@@ -50,11 +44,20 @@ namespace CountPad.Api.Controllers
 			return Ok(maybePackage);
 		}
 
+		[HttpDelete]
 		public async ValueTask<IActionResult> DeletePackageAsync(Guid id)
 		{
 			Package package = await _packageService.DeletePackageAsync(id);
 
 			return Ok(package);
+		}
+
+		[HttpGet]
+		public async ValueTask<IActionResult> GetAllPackages()
+		{
+			IQueryable<Package> packages = _packageService.GetAllPackageAsync();
+
+			return Ok(packages);
 		}
 	}
 }

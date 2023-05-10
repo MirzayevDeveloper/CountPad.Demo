@@ -15,8 +15,8 @@ namespace CountPad.Application
 		{
 			services.AddScoped<IDistributorService, DistributorService>();
 			services.AddScoped<IOrderService, OrderService>();
-			services.AddTransient<IProductService, ProductService>();
-			services.AddTransient<IPackageService, PackageService>();
+			services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<IPackageService, PackageService>();
 
 			return services;
 		}
