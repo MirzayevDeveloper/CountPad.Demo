@@ -1,7 +1,5 @@
 ﻿using CountPad.Application.Interfaces.ServiceInterfaces;
-using CountPad.Application.Services;
 using CountPad.Domain.Models.Distributors;
-using CountPad.Domain.Models.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountPad.Api.Controllers
