@@ -3,15 +3,16 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System.Collections.Generic;
 using System;
 
-namespace CountPad.Domain.Models.Products
+namespace CountPad.Domain.Models.Roles
 {
-	public class Product
+	public class Permission
 	{
 		public Guid Id { get; set; }
-		public string Name { get; set; }
-		public ProductCategory ProductType { get; set; }
-		public string Description { get; set; }
+		public string PermissionName { get; set; }
+
+		public ICollection<RolePermission> RolePermissions { get; set; }
 	}
 }

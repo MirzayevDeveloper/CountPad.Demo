@@ -3,21 +3,15 @@
 // Developed by CountPad Team
 // --------------------------------------------------------
 
+using System;
+using CountPad.Domain.Models.Bases;
+
 namespace CountPad.Domain.Models.Products
 {
-	public enum ProductTypes
+	public class ProductCategory : BaseEntity
 	{
-		Fruits,
-		Vegetables,
-		Meat,
-		Dairy,
-		Bread,
-		Beverages,
-		Electronics,
-		Clothing,
-		Books,
-		Furniture,
-		Cosmetics
-	}
+		public string Name { get; set; }
+		public string Description { get; set; }
+    }
 }
 

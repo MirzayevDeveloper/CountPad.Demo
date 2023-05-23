@@ -5,13 +5,16 @@
 
 using System;
 
-namespace CountPad.Domain.Models.Products
+namespace CountPad.Domain.Models.Roles
 {
-	public class Product
+	public class RolePermission
 	{
 		public Guid Id { get; set; }
-		public string Name { get; set; }
-		public ProductCategory ProductType { get; set; }
-		public string Description { get; set; }
+
+		public Guid RoleId { get; set; }
+		public Role Role { get; set; }
+
+		public Guid PermissionId { get; set; }
+		public Permission Permission { get; set; }
 	}
 }

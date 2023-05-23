@@ -4,14 +4,16 @@
 // --------------------------------------------------------
 
 using System;
+using CountPad.Domain.Models.Bases;
 using CountPad.Domain.Models.Users;
 
 namespace CountPad.Domain.Models.Solds
 {
-	public class Sold
+	public class Sold : BaseEntity
 	{
-		public Guid Id { get; set; }
 		public DateTime SoldDate { get; set; }
-		public User User { get; set; }
+
+        public Guid UserId { get; set; }
+        public User User { get; set; }
 	}
 }

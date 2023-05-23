@@ -5,13 +5,12 @@
 
 using System;
 
-namespace CountPad.Domain.Models.Products
+namespace CountPad.Domain.Models.Bases
 {
-	public class Product
+	public abstract class BaseEntity
 	{
-		public Guid Id { get; set; }
-		public string Name { get; set; }
-		public ProductCategory ProductType { get; set; }
-		public string Description { get; set; }
+        public Guid Id { get; set; }
+		public DateTimeOffset CreatedDate { get; set; }
+		public DateTimeOffset UpdateDate { get; set; }
 	}
 }

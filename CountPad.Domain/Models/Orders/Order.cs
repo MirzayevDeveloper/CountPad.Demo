@@ -4,15 +4,18 @@
 // --------------------------------------------------------
 
 using System;
+using CountPad.Domain.Models.Bases;
 using CountPad.Domain.Models.Packages;
 using CountPad.Domain.Models.Solds;
 
 namespace CountPad.Domain.Models.Orders
 {
-	public class Order
+	public class Order : BaseEntity
 	{
-		public Guid Id { get; set; }
+		public Guid	PackageId { get; set; }
 		public Package Package { get; set; }
-		public Sold Sold { get; set; }
+
+        public Guid SoldId { get; set; }
+        public Sold Sold { get; set; }
 	}
 }

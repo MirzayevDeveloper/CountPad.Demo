@@ -4,12 +4,12 @@
 // --------------------------------------------------------
 
 using System;
+using CountPad.Domain.Models.Bases;
 
 namespace CountPad.Domain.Models.Distributors
 {
-	public class Distributor
+	public class Distributor : BaseEntity
 	{
-		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public string CompanyPhone { get; set; }
 		public string DelivererPhone { get; set; }

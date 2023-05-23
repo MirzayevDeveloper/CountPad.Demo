@@ -16,8 +16,10 @@ namespace CountPad.Application.Services
 	{
 		private readonly IApplicationDbContext _context;
 
-		public ProductService(IApplicationDbContext context) =>
+		public ProductService(IApplicationDbContext context)
+		{
 			_context = context;
+		}
 
 		public async ValueTask<Product> AddProductAsync(Product product)
 		{
